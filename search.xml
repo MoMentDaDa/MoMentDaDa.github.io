@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>2</title>
+    <url>/2020/06/30/2/</url>
+    <content><![CDATA[<p>将 <em>_config.yml</em> 文件中的配置项 <em>post_asset_folder</em> 设为 true 后，执行命令 <code>$ hexo new post_name</code>，在 <em>source/_posts</em> 中会生成文章 <em>post_name.md</em> 和同名文件夹 <em>post_name</em> 。将图片资源放在 <em>post_name</em> 中，文章就可以使用<em>相对路径</em>引用图片资源了。</p>
+<p>作者：Jfunlee<br>链接：<a href="https://juejin.im/post/5cbc67306fb9a068a84fe71d">https://juejin.im/post/5cbc67306fb9a068a84fe71d</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>3</title>
+    <url>/2020/07/05/3/</url>
+    <content><![CDATA[<p>保存并关闭文件。</p>
+<p>给文章添加“categories”属性</p>
+<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
+<h4 id="2-创建“标签”选项"><a href="#2-创建“标签”选项" class="headerlink" title="2. 创建“标签”选项"></a>2. 创建“标签”选项</h4><p>生成“标签”页并添加tpye属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page tags</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-22 14:22:08</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>添加type: “tags”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">type: tags</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>保存并关闭文件。</p>
+<p>给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">categories: </span><br><span class="line">           - Hexo</span><br><span class="line">tags:</span><br><span class="line">           - 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>休闲</tag>
+        <tag>娱乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>first</title>
+    <url>/2020/06/29/first/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>categories文件夹下会有index.md这个文件，打开后默认内容是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-04-22 14:47:40</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>添加type: “categories”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2019-04-24 15:30:30</span><br><span class="line">type: categories</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>保存并关闭文件。</p>
+<p>给文章添加“categories”属性</p>
+<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
+<h4 id="2-创建“标签”选项"><a href="#2-创建“标签”选项" class="headerlink" title="2. 创建“标签”选项"></a>2. 创建“标签”选项</h4><p>生成“标签”页并添加tpye属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page tags</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-22 14:22:08</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>添加type: “tags”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">type: tags</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>保存并关闭文件。</p>
+<p>给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">categories: </span><br><span class="line">           - Hexo</span><br><span class="line">tags:</span><br><span class="line">           - 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>作者：骑马纵天下<br>链接：<a href="https://juejin.im/post/5cc11c41f265da038f7745b5">https://juejin.im/post/5cc11c41f265da038f7745b5</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<ol>
+<li><p>设定菜单项的图标，对应的字段是 <code>menu_icons</code>。 此设定格式是 <code>item name: icon name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
+<p>菜单图标配置示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  # Icon Mapping.</span><br><span class="line">  home: home</span><br><span class="line">  about: user</span><br><span class="line">  categories: th</span><br><span class="line">  tags: tags</span><br><span class="line">  archives: archive</span><br><span class="line">  commonweal: heartbeat</span><br></pre></td></tr></table></figure>
+
+<p>在菜单图标开启的情况下，如果菜单项与菜单未匹配（没有设置或者无效的 Font Awesome 图标名字） 的情况下，NexT 将会使用 作为图标。</p>
+<p>请注意键值（如 <code>home</code>）的大小写要严格匹配</p>
+</li>
+</ol>
+<h3 id="设置-侧栏"><a href="#设置-侧栏" class="headerlink" title="设置 侧栏"></a>设置 侧栏</h3><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 <strong>主题配置文件</strong> 中的 <code>sidebar</code> 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
+<ol>
+<li><p>设置侧栏的位置，修改 <code>sidebar.position</code> 的值，支持的选项有：</p>
+<ul>
+<li>left - 靠左放置</li>
+<li>right - 靠右放置</li>
+</ul>
+<p>目前仅 Pisces Scheme 支持 <code>position</code> 配置。影响版本<strong>5.0.0</strong>及更低版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  position: left</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置侧栏显示的时机，修改 <code>sidebar.display</code> 的值，支持的选项有：</p>
+<ul>
+<li><code>post</code> - 默认行为，在文章页面（拥有目录列表）时显示</li>
+<li><code>always</code> - 在所有页面中都显示</li>
+<li><code>hide</code> - 在所有页面中都隐藏（可以手动展开）</li>
+<li><code>remove</code> - 完全移除</li>
+</ul>
+<p><img src="C:%5CUsers%5CMoMent%5CDesktop%5C2.jpg" alt="2"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  display: post</span><br></pre></td></tr></table></figure>
+
+<p>已知侧栏在 <code>use motion: false</code> 的情况下不会展示。 影响版本<strong>5.0.0</strong>及更低版本。</p>
+</li>
+</ol>
+<h3 id="设置-头像"><a href="#设置-头像" class="headerlink" title="设置 头像"></a>设置 头像</h3><p>编辑 <strong>主题配置文件</strong>， 修改字段 <code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
+<table>
+<thead>
+<tr>
+<th align="left">地址</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">完整的互联网 URI</td>
+<td align="left"><code>http://example.com/avatar.png</code></td>
+</tr>
+<tr>
+<td align="left">站点内的地址</td>
+<td align="left">将头像放置主题目录下的 <code>source/uploads/</code> （新建 uploads 目录若不存在） 配置为：<code>avatar: /uploads/avatar.png</code>或者 放置在 <code>source/images/</code> 目录下 配置为：<code>avatar: /images/avatar.png</code></td>
+</tr>
+</tbody></table>
+<p>头像设置示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: http:&#x2F;&#x2F;example.com&#x2F;avatar.png</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置-作者昵称"><a href="#设置-作者昵称" class="headerlink" title="设置 作者昵称"></a>设置 作者昵称</h3><p>编辑 <strong>站点配置文件</strong>， 设置 <code>author</code> 为你的昵称。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jtzen9;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String str = <span class="string">"a"</span>;</span><br><span class="line">        <span class="keyword">long</span> time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str += <span class="string">"c"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"加号所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        String str2 = <span class="string">"a"</span>;</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str2.concat(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"cancat方法所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(<span class="string">"a"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            stringBuilder.append(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String str3 = stringBuilder.toString();</span><br><span class="line">        System.out.println(<span class="string">"StringBuilder的append方法："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>尽力就好</p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>休闲</tag>
+        <tag>娱乐</tag>
+        <tag>学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>first</title>
+    <url>/2020/06/29/first2/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>categories文件夹下会有index.md这个文件，打开后默认内容是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-04-22 14:47:40</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>添加type: “categories”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2019-04-24 15:30:30</span><br><span class="line">type: categories</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>保存并关闭文件。</p>
+<p>给文章添加“categories”属性</p>
+<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
+<h4 id="2-创建“标签”选项"><a href="#2-创建“标签”选项" class="headerlink" title="2. 创建“标签”选项"></a>2. 创建“标签”选项</h4><p>生成“标签”页并添加tpye属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page tags</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-22 14:22:08</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>添加type: “tags”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">type: tags</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>保存并关闭文件。</p>
+<p>给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">categories: </span><br><span class="line">           - Hexo</span><br><span class="line">tags:</span><br><span class="line">           - 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>作者：骑马纵天下<br>链接：<a href="https://juejin.im/post/5cc11c41f265da038f7745b5">https://juejin.im/post/5cc11c41f265da038f7745b5</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<ol>
+<li><p>设定菜单项的图标，对应的字段是 <code>menu_icons</code>。 此设定格式是 <code>item name: icon name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
+<p>菜单图标配置示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  # Icon Mapping.</span><br><span class="line">  home: home</span><br><span class="line">  about: user</span><br><span class="line">  categories: th</span><br><span class="line">  tags: tags</span><br><span class="line">  archives: archive</span><br><span class="line">  commonweal: heartbeat</span><br></pre></td></tr></table></figure>
+
+<p>在菜单图标开启的情况下，如果菜单项与菜单未匹配（没有设置或者无效的 Font Awesome 图标名字） 的情况下，NexT 将会使用 作为图标。</p>
+<p>请注意键值（如 <code>home</code>）的大小写要严格匹配</p>
+</li>
+</ol>
+<h3 id="设置-侧栏"><a href="#设置-侧栏" class="headerlink" title="设置 侧栏"></a>设置 侧栏</h3><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 <strong>主题配置文件</strong> 中的 <code>sidebar</code> 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
+<ol>
+<li><p>设置侧栏的位置，修改 <code>sidebar.position</code> 的值，支持的选项有：</p>
+<ul>
+<li>left - 靠左放置</li>
+<li>right - 靠右放置</li>
+</ul>
+<p>目前仅 Pisces Scheme 支持 <code>position</code> 配置。影响版本<strong>5.0.0</strong>及更低版本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  position: left</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置侧栏显示的时机，修改 <code>sidebar.display</code> 的值，支持的选项有：</p>
+<ul>
+<li><code>post</code> - 默认行为，在文章页面（拥有目录列表）时显示</li>
+<li><code>always</code> - 在所有页面中都显示</li>
+<li><code>hide</code> - 在所有页面中都隐藏（可以手动展开）</li>
+<li><code>remove</code> - 完全移除</li>
+</ul>
+<p><img src="C:%5CUsers%5CMoMent%5CDesktop%5C2.jpg" alt="2"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  display: post</span><br></pre></td></tr></table></figure>
+
+<p>已知侧栏在 <code>use motion: false</code> 的情况下不会展示。 影响版本<strong>5.0.0</strong>及更低版本。</p>
+</li>
+</ol>
+<h3 id="设置-头像"><a href="#设置-头像" class="headerlink" title="设置 头像"></a>设置 头像</h3><p>编辑 <strong>主题配置文件</strong>， 修改字段 <code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
+<table>
+<thead>
+<tr>
+<th align="left">地址</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">完整的互联网 URI</td>
+<td align="left"><code>http://example.com/avatar.png</code></td>
+</tr>
+<tr>
+<td align="left">站点内的地址</td>
+<td align="left">将头像放置主题目录下的 <code>source/uploads/</code> （新建 uploads 目录若不存在） 配置为：<code>avatar: /uploads/avatar.png</code>或者 放置在 <code>source/images/</code> 目录下 配置为：<code>avatar: /images/avatar.png</code></td>
+</tr>
+</tbody></table>
+<p>头像设置示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: http:&#x2F;&#x2F;example.com&#x2F;avatar.png</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置-作者昵称"><a href="#设置-作者昵称" class="headerlink" title="设置 作者昵称"></a>设置 作者昵称</h3><p>编辑 <strong>站点配置文件</strong>， 设置 <code>author</code> 为你的昵称。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jtzen9;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String str = <span class="string">"a"</span>;</span><br><span class="line">        <span class="keyword">long</span> time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str += <span class="string">"c"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"加号所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        String str2 = <span class="string">"a"</span>;</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str2.concat(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"cancat方法所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(<span class="string">"a"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            stringBuilder.append(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String str3 = stringBuilder.toString();</span><br><span class="line">        System.out.println(<span class="string">"StringBuilder的append方法："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>尽力就好</p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>休闲</tag>
+        <tag>娱乐</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/07/06/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+</search>

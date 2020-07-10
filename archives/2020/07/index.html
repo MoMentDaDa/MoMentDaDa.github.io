@@ -138,6 +138,11 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -193,7 +198,7 @@
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 5 篇日志。 继续努力。</span>
+        <span class="collection-header">嗯..! 目前共计 1 篇日志。 继续努力。</span>
       </div>
 
       
@@ -206,35 +211,15 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2020-07-06T20:15:43+08:00"
+              datetime="2020-07-06T20:35:39+08:00"
               content="2020-07-06">
           07-06
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2020/07/06/hello-world/" itemprop="url">
-            <span itemprop="name">Hello World</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-07-05T15:13:42+08:00"
-              content="2020-07-05">
-          07-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/07/05/3/" itemprop="url">
-            <span itemprop="name">3</span>
+          <a class="post-title-link" href="/posts/cf99e1c1.html" itemprop="url">
+            <span itemprop="name">Nginx 第一篇</span>
           </a>
       </div>
 
@@ -315,7 +300,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -328,7 +313,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -347,20 +332,6 @@
 
  <!-- 友链  -->
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      
-    </div>
-
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="http://example.com/" title="http:&#x2F;&#x2F;example.com&#x2F;" rel="noopener" target="_blank">baidu</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="http://example.com/" title="http:&#x2F;&#x2F;example.com&#x2F;" rel="noopener" target="_blank">google</a>
-        </li>
-    </ul>
-</div>
 
 
     <div class="links-of-blogroll motion-element links-of-blogroll-block">
@@ -371,22 +342,6 @@
       </div>
       <ul class="links-of-blogroll-list">
         
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
         
           <li>
             <a href="/" title="" target="_blank"></a>
@@ -433,12 +388,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>站点总字数：
-    <span title="站点总字数">7k</span>
+    <span title="站点总字数">16k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>站点阅读时长≈
-    <span title="站点阅读时长">6 分钟</span>
+    <span title="站点阅读时长">15 分钟</span>
 </div>
 
 
@@ -471,7 +426,7 @@
 		seconds - 0-59之间的整数，做为date对象的秒数
 		microseconds - 0-999之间的整数，做为date对象的毫秒数
         */
-		var t1 = Date.UTC(2020,02,13,15,00,00); //北京时间2018-2-13 00:00:00
+		var t1 = Date.UTC(2020,07,01,00,00,00); //北京时间2018-2-13 00:00:00
 		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
 		var diff = t2-t1;
 		var diffYears = Math.floor(diff/years);
@@ -487,25 +442,18 @@ document.getElementById("sitetime").innerHTML=" 网站已运行"+/*diffYears+" �
 	siteTime();
 </script>
 
-
-<!-- <div>
-<span id="busuanzi_container_site_uv">
- <span id="busuanzi_value_site_uv"></span>
-</span>
-<span id="busuanzi_value_site_pv">
-  总访问量<span id="busuanzi_value_site_pv"></span>人次
-</span>
-</div> -->
-
         
 <div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="user"></i>
       </span>
-       本站访客<span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>人次
+       <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+
+
+
       </span>
     </span>
     <span class="post-meta-divider">|</span>
@@ -514,7 +462,7 @@ document.getElementById("sitetime").innerHTML=" 网站已运行"+/*diffYears+" �
         <i class="eye"></i>
       </span>
       <span class="site-pv" title="总访问量">
-          总访问量<span id="busuanzi_value_site_pv"></span>人次
+         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>
 </div>

@@ -1,257 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2</title>
-    <url>/2020/06/30/2/</url>
-    <content><![CDATA[<p>将 <em>_config.yml</em> 文件中的配置项 <em>post_asset_folder</em> 设为 true 后，执行命令 <code>$ hexo new post_name</code>，在 <em>source/_posts</em> 中会生成文章 <em>post_name.md</em> 和同名文件夹 <em>post_name</em> 。将图片资源放在 <em>post_name</em> 中，文章就可以使用<em>相对路径</em>引用图片资源了。</p>
-<p>作者：Jfunlee<br>链接：<a href="https://juejin.im/post/5cbc67306fb9a068a84fe71d">https://juejin.im/post/5cbc67306fb9a068a84fe71d</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>first</title>
-    <url>/2020/06/29/first/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>categories文件夹下会有index.md这个文件，打开后默认内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-04-22 14:47:40</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>添加type: “categories”到内容中，添加后是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2019-04-24 15:30:30</span><br><span class="line">type: categories</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>保存并关闭文件。</p>
-<p>给文章添加“categories”属性</p>
-<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
-<h4 id="2-创建“标签”选项"><a href="#2-创建“标签”选项" class="headerlink" title="2. 创建“标签”选项"></a>2. 创建“标签”选项</h4><p>生成“标签”页并添加tpye属性</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page tags</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-22 14:22:08</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>添加type: “tags”到内容中，添加后是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">type: tags</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>保存并关闭文件。</p>
-<p>给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">categories: </span><br><span class="line">           - Hexo</span><br><span class="line">tags:</span><br><span class="line">           - 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>作者：骑马纵天下<br>链接：<a href="https://juejin.im/post/5cc11c41f265da038f7745b5">https://juejin.im/post/5cc11c41f265da038f7745b5</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<ol>
-<li><p>设定菜单项的图标，对应的字段是 <code>menu_icons</code>。 此设定格式是 <code>item name: icon name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
-<p>菜单图标配置示例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  # Icon Mapping.</span><br><span class="line">  home: home</span><br><span class="line">  about: user</span><br><span class="line">  categories: th</span><br><span class="line">  tags: tags</span><br><span class="line">  archives: archive</span><br><span class="line">  commonweal: heartbeat</span><br></pre></td></tr></table></figure>
-
-<p>在菜单图标开启的情况下，如果菜单项与菜单未匹配（没有设置或者无效的 Font Awesome 图标名字） 的情况下，NexT 将会使用 作为图标。</p>
-<p>请注意键值（如 <code>home</code>）的大小写要严格匹配</p>
-</li>
-</ol>
-<h3 id="设置-侧栏"><a href="#设置-侧栏" class="headerlink" title="设置 侧栏"></a>设置 侧栏</h3><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 <strong>主题配置文件</strong> 中的 <code>sidebar</code> 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
-<ol>
-<li><p>设置侧栏的位置，修改 <code>sidebar.position</code> 的值，支持的选项有：</p>
+    <title>Nginx 第一篇</title>
+    <url>/posts/cf99e1c1.html</url>
+    <content><![CDATA[<h2 id="一、Nginx-介绍："><a href="#一、Nginx-介绍：" class="headerlink" title="一、Nginx 介绍："></a>一、Nginx 介绍：</h2><h3 id="A、概述："><a href="#A、概述：" class="headerlink" title="A、概述："></a>A、概述：</h3><h4 id="1、介绍"><a href="#1、介绍" class="headerlink" title="1、介绍"></a>1、介绍</h4><p>Nginx是世界上第二大Web服务器，其他Web服务器有：Apache、Lighttpd、Tomcat、Jetty、IIS。</p>
+<p>区别：</p>
 <ul>
-<li>left - 靠左放置</li>
-<li>right - 靠右放置</li>
+<li>Tomcat、Jetty面向Java语言，先天就是重量级的Web服务器，他们的性能与Nginx没有可比性；</li>
+<li>IIS只能在Windows操作系统上运行；</li>
+<li>Apache发展时期最长，是毫无争议的第一大Web服务器，然而它被设计为一个重量级的、不支持高并发的Web服务器，这决定了Apache不可能成为高性能Web服务器。</li>
+<li>Nginx是俄罗斯的Igor Sysoev用C语言开发的 跨平台的支持高并发的Web服务器，以性能为王。</li>
 </ul>
-<p>目前仅 Pisces Scheme 支持 <code>position</code> 配置。影响版本<strong>5.0.0</strong>及更低版本。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  position: left</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置侧栏显示的时机，修改 <code>sidebar.display</code> 的值，支持的选项有：</p>
+<h4 id="2、特点："><a href="#2、特点：" class="headerlink" title="2、特点："></a><strong>2、特点：</strong></h4><ul>
+<li>更快。一方面单次请求将会得到更快的响应；另一方面 在数以万计的并发请求时，Nginx比其他Web服务器更快的响应请求。</li>
+<li>高扩展性。它完全由不同功能、不同层次、不同类别且耦合度极低的模块组成。</li>
+<li>高可靠性。nginx的高可靠性来自于其核心框架代码的优秀设计、模块设计的简单性。</li>
+<li>低内存消耗。1万个非活跃的Http Keep-Alive连接在Nginx中仅消耗2.5MB的内存，这是nginx支持高并发连接的基础。</li>
+<li>单机支持10万以上的并发连接。</li>
+<li>热部署。7X24小时不间断的服务的前提下，升级nginx的可执行文件。</li>
+<li>最自由的BSD许可协议。用户不仅免费使用nginx，而且可以参与修改源代码</li>
+</ul>
+<p>选择Nginx的核心理由是：它能够在支持高并发请求的同时 保持高效的服务。Nginx先天的事件驱动型设计、全异步的网络I/O处理机制、极少的进程间切换以及许多优化设计，使得它天生善于处理高并发压力下的互联网请求。</p>
+<h3 id="B、安装教程："><a href="#B、安装教程：" class="headerlink" title="B、安装教程："></a>B、安装教程：</h3><h4 id="1、window-安装："><a href="#1、window-安装：" class="headerlink" title="1、window 安装："></a>1、window 安装：</h4><h5 id="a、安装教程："><a href="#a、安装教程：" class="headerlink" title="a、安装教程："></a>a、安装教程：</h5><p>　　进入官网<a href="https://www.cnblogs.com/taiyonghai/p/nginx.org">nginx.org</a>，直接直接下载相应的文件。分别有Linux和Windows两个版本。点击后就会下载，下载完成后开始安装，其实官网已经告诉了如何安装，右侧“documentation -&gt; nginx windows”就有详细的说明，只是英文而已。</p>
+
+
+<p>下载相应的文件，解压到响应的目录即完成安装。使用cmd命令进行操作，不可以直接双击nginx.exe。不要直接双击nginx.exe，不要直接双击nginx.exe</p>
+<p>　　一定要在dos窗口启动，不要直接双击nginx.exe，这样会导致修改配置后重启、停止nginx无效，需要手动关闭任务管理器内的所有nginx进程，再启动才可以。</p>
+<p><strong>1、使用命令到达nginx的加压缩后的目录*</strong></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">cd c:\nginx<span class="number">-1.15</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2、启动nginx服务，启动时会一闪而过是正常的</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">start nginx</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、查看任务进程是否存在，dos或打开任务管理器都行</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tasklist &#x2F;fi &quot;imagename eq nginx.exe&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>　　打开任务管理器在进程中看不到nginx.exe的进程（双击nginx.exe时会显示在这里），需要打开详细信息里面能看到隐藏的nginx.exe进程</p>
+
+
+<p>​      如果都没有可能是启动报错了查看一下日志，在nginx目录中的logs文件夹下error.log是日志文件</p>
+
+
+<h5 id="b、常见错误："><a href="#b、常见错误：" class="headerlink" title="b、常见错误："></a>b、常见错误：</h5><p><strong>a、端口占用 ：</strong></p>
+<p>　　修改配置文件，进入解压缩目录，直接文件夹点击进去即可，不需要从dos操作。具体操作如图所示：</p>
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx -t -c &#x2F;nginx-1.15.2&#x2F;conf&#x2F;nginx.conf   &#x2F;&#x2F; 检查配置文件是否正确</span><br><span class="line">nginx -s reload  &#x2F;&#x2F;如果没有关闭程序，可以直接重新加载配置文件</span><br><span class="line">http:&#x2F;&#x2F;localhost:8800   &#x2F;&#x2F;浏览器访问既可以查看是否启动成功</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2、Linux安装-："><a href="#2、Linux安装-：" class="headerlink" title="2、Linux安装 ："></a>2、Linux安装 ：</h4><p><strong>1、下载相应的依赖组件</strong>：</p>
+<p>　　需要安装 gcc 的环境，如果没有安装，需要安装。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install gcc-c++</span><br></pre></td></tr></table></figure>
+
+<p>　　下载openssl主要用于ssl模块加密，支持htps。确保系统已经安装了wget，如果没有安装，执行 yum install wget 安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;www.openssl.org&#x2F;source&#x2F;openssl-1.0.2s.tar.gz </span><br><span class="line">yum install -y openssl openssl-devel</span><br></pre></td></tr></table></figure>
+
+<p>　　下载<code>pcre</code>来实现对地址重定向，地址重写功能和localtion指令以及正则表达式的支持</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;ftp.pcre.org&#x2F;pub&#x2F;pcre&#x2F;pcre-8.43.tar.gz</span><br><span class="line">yum install -y pcre pcre-devel</span><br></pre></td></tr></table></figure>
+
+<p>　　下载<code>zlib</code> gzip压缩模块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;zlib.net&#x2F;zlib-1.2.11.tar.gz</span><br><span class="line">yum install -y zlib zlib-devel</span><br></pre></td></tr></table></figure>
+
+<p>　　下载Nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.17.1.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>　　解压所有的安装包</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls *.tar.gz | xargs -n1 tar xzvf    &#x2F;&#x2F;解压全部压缩包</span><br><span class="line">tar –xvf pcre-8.37.tar.gz  &#x2F;&#x2F;解压单个文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、编译选项</strong>：</p>
+<p>　　使用<code>./configure</code>设置各种Nginx参数的脚本，包括源和配置文件的路径，编译器选项，连接处理方法和模块列表。该脚本通过创建编译代码和安装Nginx开源所需的Makefile来完成。vi /usr/local/nginx/conf/nginx.conf</p>
+
+
+<p>　　然后进行编译安装，</p>
+
+
+<p>　　输入./nginx 启动程序。输入网址进行查看。如果有防火墙阻挡，按以下命令设置防火墙即可：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps aux|grep nginx &#x2F;&#x2F; 查看Nginx进程</span><br><span class="line">nginx -s stop   &#x2F;&#x2F;  快速关闭</span><br><span class="line">nginx -s quit   &#x2F;&#x2F; 安全有序的关闭 </span><br><span class="line">&#x2F;nginx -s reload  &#x2F;&#x2F;重新加载配置文件</span><br><span class="line">.&#x2F;nginx -v  &#x2F;&#x2F;  查看 nginx 版本号</span><br><span class="line">chmod +x &#x2F;etc&#x2F;rc.d&#x2F;rc.local  &#x2F;&#x2F; 配置开机自启</span><br><span class="line">whereis nginx  &#x2F;&#x2F; 查看安装路径</span><br><span class="line"></span><br><span class="line">service iptables stop  &#x2F;&#x2F;关闭防火墙</span><br><span class="line">chkconfig iptables off  关闭开机自启动防火墙</span><br><span class="line">firewall-cmd --list-all &#x2F;&#x2F; 查看开放的端口号</span><br><span class="line">firewall-cmd --add-service&#x3D;http –permanent</span><br><span class="line">firewall-cmd --add-port&#x3D;80&#x2F;tcp --permanent  &#x2F;&#x2F;设置开放的端口号，设置完成需要重启</span><br><span class="line">firewall-cmd –reload  &#x2F;&#x2F;重启防火墙</span><br><span class="line">netstat -tlnp &#x2F;&#x2F; 查看端口号</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、配置文件："><a href="#二、配置文件：" class="headerlink" title="二、配置文件："></a>二、配置文件：</h2><h3 id="A、文件结构介绍："><a href="#A、文件结构介绍：" class="headerlink" title="A、文件结构介绍："></a>A、文件结构介绍：</h3><p>　　包含全局块，events块和http块（http块包含http全局块和多个server块-server块又包含server全局块和location块）;如下所示:</p>
+<p>　　外层的指令可以作用于自身的块和此块中的所有低层级块，并且还遵循低级优于高级，类似于Java中的全局变量和局部变量。</p>
+
+
+<p>　　各模块的作用：</p>
+
+
+<h3 id="B、文件介绍："><a href="#B、文件介绍：" class="headerlink" title="B、文件介绍："></a>B、文件介绍：</h3><p>　　参数和详细配置说明，请参考<a href="http://nginx.org/en/docs/http/ngx_http_upstream_module.html#server">官方文档</a>，以下为常用配置：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#定义Nginx运行的用户和用户组</span><br><span class="line">user www www; </span><br><span class="line"></span><br><span class="line">#nginx进程数，通常设置成和cpu的数量相等</span><br><span class="line">worker_processes 4; </span><br><span class="line"></span><br><span class="line">#全局错误日志定义类型，[debug | info | notice | warn | error | crit]</span><br><span class="line">#error_log  logs&#x2F;error.log;</span><br><span class="line">#error_log  logs&#x2F;error.log  notice;</span><br><span class="line">#error_log  logs&#x2F;error.log  info;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#进程pid文件</span><br><span class="line">#pid        logs&#x2F;nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#指定进程可以打开的最大描述符：数目</span><br><span class="line">#工作模式与连接数上限</span><br><span class="line">##这个指令是指当一个nginx进程打开的最多文件描述符数目，理论值应该是最多打开文件数（ulimit -n）与nginx进程数相除，但是nginx分配请求并不是那么均匀，所以最好与ulimit -n 的值保持一致。</span><br><span class="line">#这是因为nginx调度时分配请求到进程并不是那么的均衡，所以假如填写10240，总并发量达到3-4万时就有进程可能超过10240了，这时会返回502错误。</span><br><span class="line">worker_rlimit_nofile 65535;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    #参考事件模型，use [ kqueue | rtsig | epoll | &#x2F;dev&#x2F;poll | select | poll ]; epoll模型</span><br><span class="line">    #是Linux 2.6以上版本内核中的高性能网络I&#x2F;O模型，linux建议epoll，如果跑在FreeBSD上面，就用kqueue模型。</span><br><span class="line">    #补充说明：</span><br><span class="line">    #与apache相类，nginx针对不同的操作系统，有不同的事件模型</span><br><span class="line">    #A）标准事件模型</span><br><span class="line">    #Select、poll属于标准事件模型，如果当前系统不存在更有效的方法，nginx会选择select或poll</span><br><span class="line">    #B）高效事件模型</span><br><span class="line">    #Kqueue：使用于FreeBSD 4.1+, OpenBSD 2.9+, NetBSD 2.0 和 MacOS X.使用双处理器的MacOS X系统使用kqueue可能会造成内核崩溃。</span><br><span class="line">    #Epoll：使用于Linux内核2.6版本及以后的系统。</span><br><span class="line">    #&#x2F;dev&#x2F;poll：使用于Solaris 7 11&#x2F;99+，HP&#x2F;UX 11.22+ (eventport)，IRIX 6.5.15+ 和 Tru64 UNIX 5.1A+。</span><br><span class="line">    #Eventport：使用于Solaris 10。 为了防止出现内核崩溃的问题， 有必要安装安全补丁。</span><br><span class="line">    use epoll</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    #单个进程最大连接数（最大连接数&#x3D;连接数+进程数）</span><br><span class="line">    #根据硬件调整，和前面工作进程配合起来用，尽量大，但是别把cup跑到100%就行。</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">    </span><br><span class="line">    #keepalive 超时时间</span><br><span class="line">    keepalive_timeout 60;</span><br><span class="line">    </span><br><span class="line">    #客户端请求头部的缓冲区大小。这个可以根据你的系统分页大小来设置，一般一个请求头的大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。</span><br><span class="line">    #分页大小可以用命令getconf PAGESIZE 取得。</span><br><span class="line">    #[root@web001 ~]# getconf PAGESIZE</span><br><span class="line">    #但也有client_header_buffer_size超过4k的情况，但是client_header_buffer_size该值必须设置为“系统分页大小”的整倍数。</span><br><span class="line">    client_header_buffer_size 4k;</span><br><span class="line">    </span><br><span class="line">    #这个将为打开文件指定缓存，默认是没有启用的，max指定缓存数量，建议和打开文件数一致，inactive是指经过多长时间文件没被请求后删除缓存。</span><br><span class="line">    open_file_cache max&#x3D;65535 inactive&#x3D;60s;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    #这个是指多长时间检查一次缓存的有效信息。</span><br><span class="line">    #语法:open_file_cache_valid time 默认值:open_file_cache_valid 60 使用字段:http, server, location 这个指令指定了何时需要检查open_file_cache中缓存项目的有效信息.</span><br><span class="line">    open_file_cache_valid 80s;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    #open_file_cache指令中的inactive参数时间内文件的最少使用次数，如果超过这个数字，文件描述符一直是在缓存中打开的，如上例，如果有一个文件在inactive时间内一次没被使用，它将被移除。</span><br><span class="line">    #语法:open_file_cache_min_uses number 默认值:open_file_cache_min_uses 1 使用字段:http, server, location  这个指令指定了在open_file_cache指令无效的参数中一定的时间范围内可以使用的最小文件数,如果使用更大的值,文件描述符在cache中总是打开状态.</span><br><span class="line">    open_file_cache_min_uses 1;</span><br><span class="line">    </span><br><span class="line">    #语法:open_file_cache_errors on | off 默认值:open_file_cache_errors off 使用字段:http, server, location 这个指令指定是否在搜索一个文件是记录cache错误.</span><br><span class="line">    open_file_cache_errors on;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#设定http服务器，利用它的反向代理功能提供负载均衡支持</span><br><span class="line">http&#123;</span><br><span class="line">    #文件扩展名与文件类型映射表</span><br><span class="line">    include mime.types;</span><br><span class="line">    </span><br><span class="line">    #默认文件类型</span><br><span class="line">    default_type application&#x2F;octet-stream;</span><br><span class="line">    </span><br><span class="line">    #默认编码</span><br><span class="line">    charset utf-8;</span><br><span class="line">    </span><br><span class="line">    #服务器名字的hash表大小</span><br><span class="line">    #保存服务器名字的hash表是由指令server_names_hash_max_size 和server_names_hash_bucket_size所控制的。参数hash bucket size总是等于hash表的大小，并且是一路处理器缓存大小的倍数。在减少了在内存中的存取次数后，使在处理器中加速查找hash表键值成为可能。如果hash bucket size等于一路处理器缓存的大小，那么在查找键的时候，最坏的情况下在内存中查找的次数为2。第一次是确定存储单元的地址，第二次是在存储单元中查找键 值。因此，如果Nginx给出需要增大hash max size 或 hash bucket size的提示，那么首要的是增大前一个参数的大小.</span><br><span class="line">    server_names_hash_bucket_size 128;</span><br><span class="line">    </span><br><span class="line">    #客户端请求头部的缓冲区大小。这个可以根据你的系统分页大小来设置，一般一个请求的头部大小不会超过1k，不过由于一般系统分页都要大于1k，所以这里设置为分页大小。分页大小可以用命令getconf PAGESIZE取得。</span><br><span class="line">    client_header_buffer_size 32k;</span><br><span class="line">    </span><br><span class="line">    #客户请求头缓冲大小。nginx默认会用client_header_buffer_size这个buffer来读取header值，如果header过大，它会使用large_client_header_buffers来读取。</span><br><span class="line">    large_client_header_buffers 4 64k;</span><br><span class="line">    </span><br><span class="line">    #设定通过nginx上传文件的大小</span><br><span class="line">    client_max_body_size 8m;</span><br><span class="line">    </span><br><span class="line">    #开启高效文件传输模式，sendfile指令指定nginx是否调用sendfile函数来输出文件，对于普通应用设为 on，如果用来进行下载等应用磁盘IO重负载应用，可设置为off，以平衡磁盘与网络I&#x2F;O处理速度，降低系统的负载。注意：如果图片显示不正常把这个改成off。</span><br><span class="line">    #sendfile指令指定 nginx 是否调用sendfile 函数（zero copy 方式）来输出文件，对于普通应用，必须设为on。如果用来进行下载等应用磁盘IO重负载应用，可设置为off，以平衡磁盘与网络IO处理速度，降低系统uptime。</span><br><span class="line">    sendfile on;</span><br><span class="line">    </span><br><span class="line">     #开启目录列表访问，合适下载服务器，默认关闭。</span><br><span class="line">    autoindex on;</span><br><span class="line">    </span><br><span class="line">      #此选项允许或禁止使用socke的TCP_CORK的选项，此选项仅在使用sendfile的时候使用</span><br><span class="line">    tcp_nopush on;</span><br><span class="line">     </span><br><span class="line">    tcp_nodelay on;</span><br><span class="line">    </span><br><span class="line">    #长连接超时时间，单位是秒</span><br><span class="line">    keepalive_timeout 120;</span><br><span class="line">    </span><br><span class="line">    #FastCGI相关参数是为了改善网站的性能：减少资源占用，提高访问速度。下面参数看字面意思都能理解。</span><br><span class="line">    fastcgi_connect_timeout 300;</span><br><span class="line">    fastcgi_send_timeout 300;</span><br><span class="line">    fastcgi_read_timeout 300;</span><br><span class="line">    fastcgi_buffer_size 64k;</span><br><span class="line">    fastcgi_buffers 4 64k;</span><br><span class="line">    fastcgi_busy_buffers_size 128k;</span><br><span class="line">    fastcgi_temp_file_write_size 128k;</span><br><span class="line">    </span><br><span class="line">    #gzip模块设置</span><br><span class="line">    gzip on; #开启gzip压缩输出</span><br><span class="line">    gzip_min_length 1k;    #最小压缩文件大小</span><br><span class="line">    gzip_buffers 4 16k;    #压缩缓冲区</span><br><span class="line">    gzip_http_version 1.0; #压缩版本（默认1.1，前端如果是squid2.5请使用1.0）</span><br><span class="line">    gzip_comp_level 2;     #压缩等级</span><br><span class="line">    gzip_types text&#x2F;plain application&#x2F;x-javascript text&#x2F;css application&#x2F;xml;    #压缩类型，默认就已经包含textml，所以下面就不用再写了，写上去也不会有问题，但是会有一个warn。</span><br><span class="line">    gzip_vary on;</span><br><span class="line"></span><br><span class="line">    #开启限制IP连接数的时候需要使用</span><br><span class="line">    #limit_zone crawler $binary_remote_addr 10m;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    #负载均衡配置</span><br><span class="line">    upstream piao.jd.com &#123;</span><br><span class="line">     </span><br><span class="line">        #upstream的负载均衡，weight是权重，可以根据机器配置定义权重。weigth参数表示权值，权值越高被分配到的几率越大。</span><br><span class="line">        server 192.168.80.121:80 weight&#x3D;3;</span><br><span class="line">        server 192.168.80.122:80 weight&#x3D;2;</span><br><span class="line">        server 192.168.80.123:80 weight&#x3D;3;</span><br><span class="line"></span><br><span class="line">        #nginx的upstream目前支持4种方式的分配</span><br><span class="line">        #1、轮询（默认）</span><br><span class="line">        #每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。</span><br><span class="line">        #2、weight</span><br><span class="line">        #指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。</span><br><span class="line">        #例如：</span><br><span class="line">        #upstream bakend &#123;</span><br><span class="line">        #    server 192.168.0.14 weight&#x3D;10;</span><br><span class="line">        #    server 192.168.0.15 weight&#x3D;10;</span><br><span class="line">        #&#125;</span><br><span class="line">        #2、ip_hash</span><br><span class="line">        #每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。</span><br><span class="line">        #例如：</span><br><span class="line">        #upstream bakend &#123;</span><br><span class="line">        #    ip_hash;</span><br><span class="line">        #    server 192.168.0.14:88;</span><br><span class="line">        #    server 192.168.0.15:80;</span><br><span class="line">        #&#125;</span><br><span class="line">        #3、fair（第三方）</span><br><span class="line">        #按后端服务器的响应时间来分配请求，响应时间短的优先分配。</span><br><span class="line">        #upstream backend &#123;</span><br><span class="line">        #    server server1;</span><br><span class="line">        #    server server2;</span><br><span class="line">        #    fair;</span><br><span class="line">        #&#125;</span><br><span class="line">        #4、url_hash（第三方）</span><br><span class="line">        #按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。</span><br><span class="line">        #例：在upstream中加入hash语句，server语句中不能写入weight等其他的参数，hash_method是使用的hash算法</span><br><span class="line">        #upstream backend &#123;</span><br><span class="line">        #    server squid1:3128;</span><br><span class="line">        #    server squid2:3128;</span><br><span class="line">        #    hash $request_uri;</span><br><span class="line">        #    hash_method crc32;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        #tips:</span><br><span class="line">        #upstream bakend&#123;#定义负载均衡设备的Ip及设备状态&#125;&#123;</span><br><span class="line">        #    ip_hash;</span><br><span class="line">        #    server 127.0.0.1:9090 down;</span><br><span class="line">        #    server 127.0.0.1:8080 weight&#x3D;2;</span><br><span class="line">        #    server 127.0.0.1:6060;</span><br><span class="line">        #    server 127.0.0.1:7070 backup;</span><br><span class="line">        #&#125;</span><br><span class="line">        #在需要使用负载均衡的server中增加 proxy_pass http:&#x2F;&#x2F;bakend&#x2F;;</span><br><span class="line"></span><br><span class="line">        #每个设备的状态设置为:</span><br><span class="line">        #1.down表示单前的server暂时不参与负载</span><br><span class="line">        #2.weight为weight越大，负载的权重就越大。</span><br><span class="line">        #3.max_fails：允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream模块定义的错误</span><br><span class="line">        #4.fail_timeout:max_fails次失败后，暂停的时间。</span><br><span class="line">        #5.backup： 其它所有的非backup机器down或者忙的时候，请求backup机器。所以这台机器压力会最轻。</span><br><span class="line"></span><br><span class="line">        #nginx支持同时设置多组的负载均衡，用来给不用的server来使用。</span><br><span class="line">        #client_body_in_file_only设置为On 可以讲client post过来的数据记录到文件中用来做debug</span><br><span class="line">        #client_body_temp_path设置记录文件的目录 可以设置最多3层目录</span><br><span class="line">        #location对URL进行匹配.可以进行重定向或者进行新的代理 负载均衡</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    #虚拟主机的配置</span><br><span class="line">    server &#123;</span><br><span class="line">        #监听端口</span><br><span class="line">        listen 80;</span><br><span class="line"></span><br><span class="line">        #域名可以有多个，用空格隔开</span><br><span class="line">        server_name www.jd.com jd.com;</span><br><span class="line">        #默认入口文件名称</span><br><span class="line">        index index.html index.htm index.php;</span><br><span class="line">        root &#x2F;data&#x2F;www&#x2F;jd;</span><br><span class="line"></span><br><span class="line">        #对******进行负载均衡</span><br><span class="line">        location ~ .*.(php|php5)?$</span><br><span class="line">        &#123;</span><br><span class="line">            fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">            fastcgi_index index.php;</span><br><span class="line">            include fastcgi.conf;</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        #图片缓存时间设置</span><br><span class="line">        location ~ .*.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">        &#123;</span><br><span class="line">            expires 10d;</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        #JS和CSS缓存时间设置</span><br><span class="line">        location ~ .*.(js|css)?$</span><br><span class="line">        &#123;</span><br><span class="line">            expires 1h;</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">        #日志格式设定</span><br><span class="line">        #$remote_addr与$http_x_forwarded_for用以记录客户端的ip地址；</span><br><span class="line">        #$remote_user：用来记录客户端用户名称；</span><br><span class="line">        #$time_local： 用来记录访问时间与时区；</span><br><span class="line">        #$request： 用来记录请求的url与http协议；</span><br><span class="line">        #$status： 用来记录请求状态；成功是200，</span><br><span class="line">        #$body_bytes_sent ：记录发送给客户端文件主体内容大小；</span><br><span class="line">        #$http_referer：用来记录从那个页面链接访问过来的；</span><br><span class="line">        #$http_user_agent：记录客户浏览器的相关信息；</span><br><span class="line">        #通常web服务器放在反向代理的后面，这样就不能获取到客户的IP地址了，通过$remote_add拿到的IP地址是反向代理服务器的iP地址。反向代理服务器在转发请求的http头信息中，可以增加x_forwarded_for信息，用以记录原有客户端的IP地址和原来客户端的请求的服务器地址。</span><br><span class="line">        log_format access &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;</span><br><span class="line">        &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;</span><br><span class="line">        &#39;&quot;$http_user_agent&quot; $http_x_forwarded_for&#39;;</span><br><span class="line">         </span><br><span class="line">        #定义本虚拟主机的访问日志</span><br><span class="line">        access_log  &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;logs&#x2F;host.access.log  main;</span><br><span class="line">        access_log  &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;logs&#x2F;host.access.404.log  log404;</span><br><span class="line">         </span><br><span class="line">        #对 &quot;&#x2F;connect-controller&quot; 启用反向代理</span><br><span class="line">        location &#x2F;connect-controller &#123;</span><br><span class="line">            proxy_pass http:&#x2F;&#x2F;127.0.0.1:88; #请注意此处端口号不能与虚拟主机监听的端口号一样（也就是server监听的端口）</span><br><span class="line">            proxy_redirect off;</span><br><span class="line">            proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">             </span><br><span class="line">            #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP</span><br><span class="line">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">             </span><br><span class="line">            #以下是一些反向代理的配置，可选。</span><br><span class="line">            proxy_set_header Host $host;</span><br><span class="line"></span><br><span class="line">            #允许客户端请求的最大单文件字节数</span><br><span class="line">            client_max_body_size 10m;</span><br><span class="line"></span><br><span class="line">            #缓冲区代理缓冲用户端请求的最大字节数，</span><br><span class="line">            #如果把它设置为比较大的数值，例如256k，那么，无论使用firefox还是IE浏览器，来提交任意小于256k的图片，都很正常。如果注释该指令，使用默认的client_body_buffer_size设置，也就是操作系统页面大小的两倍，8k或者16k，问题就出现了。</span><br><span class="line">            #无论使用firefox4.0还是IE8.0，提交一个比较大，200k左右的图片，都返回500 Internal Server Error错误</span><br><span class="line">            client_body_buffer_size 128k;</span><br><span class="line"></span><br><span class="line">            #表示使nginx阻止HTTP应答代码为400或者更高的应答。</span><br><span class="line">            proxy_intercept_errors on;</span><br><span class="line"></span><br><span class="line">            #后端服务器连接的超时时间_发起握手等候响应超时时间</span><br><span class="line">            #nginx跟后端服务器连接超时时间(代理连接超时)</span><br><span class="line">            proxy_connect_timeout 90;</span><br><span class="line"></span><br><span class="line">            #后端服务器数据回传时间(代理发送超时)</span><br><span class="line">            #后端服务器数据回传时间_就是在规定时间之内后端服务器必须传完所有的数据</span><br><span class="line">            proxy_send_timeout 90;</span><br><span class="line"></span><br><span class="line">            #连接成功后，后端服务器响应时间(代理接收超时)</span><br><span class="line">            #连接成功后_等候后端服务器响应时间_其实已经进入后端的排队之中等候处理（也可以说是后端服务器处理请求的时间）</span><br><span class="line">            proxy_read_timeout 90;</span><br><span class="line"></span><br><span class="line">            #设置代理服务器（nginx）保存用户头信息的缓冲区大小</span><br><span class="line">            #设置从被代理服务器读取的第一部分应答的缓冲区大小，通常情况下这部分应答中包含一个小的应答头，默认情况下这个值的大小为指令proxy_buffers中指定的一个缓冲区的大小，不过可以将其设置为更小</span><br><span class="line">            proxy_buffer_size 4k;</span><br><span class="line"></span><br><span class="line">            #proxy_buffers缓冲区，网页平均在32k以下的设置</span><br><span class="line">            #设置用于读取应答（来自被代理服务器）的缓冲区数目和大小，默认情况也为分页大小，根据操作系统的不同可能是4k或者8k</span><br><span class="line">            proxy_buffers 4 32k;</span><br><span class="line"></span><br><span class="line">            #高负荷下缓冲大小（proxy_buffers*2）</span><br><span class="line">            proxy_busy_buffers_size 64k;</span><br><span class="line"></span><br><span class="line">            #设置在写入proxy_temp_path时数据的大小，预防一个工作进程在传递文件时阻塞太长</span><br><span class="line">            #设定缓存文件夹大小，大于这个值，将从upstream服务器传</span><br><span class="line">            proxy_temp_file_write_size 64k;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        #本地动静分离反向代理配置</span><br><span class="line">        #所有jsp的页面均交由tomcat或resin处理</span><br><span class="line">        location ~ .(jsp|jspx|do)?$ &#123;</span><br><span class="line">            proxy_set_header Host $host;</span><br><span class="line">            proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">            proxy_pass http:&#x2F;&#x2F;127.0.0.1:8080;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、基本功能："><a href="#三、基本功能：" class="headerlink" title="三、基本功能："></a>三、基本功能：</h2><h3 id="A、代理功能："><a href="#A、代理功能：" class="headerlink" title="A、代理功能："></a>A、代理功能：</h3><h4 id="1、介绍："><a href="#1、介绍：" class="headerlink" title="1、介绍："></a>1、介绍：</h4><p>Nginx 能够同时支持正向代理和反向代理，这两种代理模式的区别如下：</p>
 <ul>
-<li><code>post</code> - 默认行为，在文章页面（拥有目录列表）时显示</li>
-<li><code>always</code> - 在所有页面中都显示</li>
-<li><code>hide</code> - 在所有页面中都隐藏（可以手动展开）</li>
-<li><code>remove</code> - 完全移除</li>
+<li>正向代理发生在客户端，是客户端主动发起的代理。如我们不能直接访问某个服务器，但可以间接通过中间的代理服务器去进行访问，然后将访问结果再返回给我们。</li>
+<li>反向代理发生在服务端，客户端并不知道发生了代理，示例如下。用户只知道将请求发送给 Nginx，但是并不知道请求被转发了，也不知道被转发给了哪一台应用服务器。实际上对于用户来说，他也没必要知道，因为请求结果都是相同的。</li>
 </ul>
-<p><img src="C:%5CUsers%5CMoMent%5CDesktop%5C2.jpg" alt="2"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  display: post</span><br></pre></td></tr></table></figure>
 
-<p>已知侧栏在 <code>use motion: false</code> 的情况下不会展示。 影响版本<strong>5.0.0</strong>及更低版本。</p>
-</li>
-</ol>
-<h3 id="设置-头像"><a href="#设置-头像" class="headerlink" title="设置 头像"></a>设置 头像</h3><p>编辑 <strong>主题配置文件</strong>， 修改字段 <code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
-<table>
-<thead>
-<tr>
-<th align="left">地址</th>
-<th align="left">值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">完整的互联网 URI</td>
-<td align="left"><code>http://example.com/avatar.png</code></td>
-</tr>
-<tr>
-<td align="left">站点内的地址</td>
-<td align="left">将头像放置主题目录下的 <code>source/uploads/</code> （新建 uploads 目录若不存在） 配置为：<code>avatar: /uploads/avatar.png</code>或者 放置在 <code>source/images/</code> 目录下 配置为：<code>avatar: /images/avatar.png</code></td>
-</tr>
-</tbody></table>
-<p>头像设置示例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: http:&#x2F;&#x2F;example.com&#x2F;avatar.png</span><br></pre></td></tr></table></figure>
 
-<h3 id="设置-作者昵称"><a href="#设置-作者昵称" class="headerlink" title="设置 作者昵称"></a>设置 作者昵称</h3><p>编辑 <strong>站点配置文件</strong>， 设置 <code>author</code> 为你的昵称。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jtzen9;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String str = <span class="string">"a"</span>;</span><br><span class="line">        <span class="keyword">long</span> time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str += <span class="string">"c"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"加号所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        String str2 = <span class="string">"a"</span>;</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str2.concat(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"cancat方法所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(<span class="string">"a"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            stringBuilder.append(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String str3 = stringBuilder.toString();</span><br><span class="line">        System.out.println(<span class="string">"StringBuilder的append方法："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、反向代理实现："><a href="#2、反向代理实现：" class="headerlink" title="2、反向代理实现："></a>2、反向代理实现：</h4><h5 id="a、单域名代理："><a href="#a、单域名代理：" class="headerlink" title="a、单域名代理："></a>a、单域名代理：</h5><p>　　实现效果：打开浏览器，在浏览器地址栏输入地址<span><a href="http://www.123.com">www.123.com</a></span>跳转到 liunx 系统 tomcat 主页面中</p>
+<p><strong>①、修改tomcat：</strong></p>
+<p>　　在 liunx 系统安装 tomcat，使用默认端口 8080，我这里8080被其他应用占用，所以我已修改端口为8081。在conf目录下的server.xml配置文件中，如下，将port改为 8081，其实下面也有类似的Connector 标签，但是要看protocol协议为HTTP/1.1的标签修改即可。最后记得开放端口，</p>
 
 
 
-<p>尽力就好</p>
+
+<p><strong>②、修改电脑Host文件：</strong></p>
+
+
+<p><strong>③、测试：</strong></p>
+<p>　　如上配置，我们监听 80 端口，访问域名为 <a href="http://www.123.com，不加端口号时默认为">www.123.com，不加端口号时默认为</a> 80 端口，故 访问该域名时会跳转到 127.0.0.1:8081 路径上。在浏览器端输入 <a href="http://www.123.com">www.123.com</a> 后，界面将会跳向Tomcat界面。原理图如下：</p>
+
+
+<h5 id="b、多域名代理："><a href="#b、多域名代理：" class="headerlink" title="ｂ、多域名代理："></a>ｂ、多域名代理：</h5><p><strong>①、效果：</strong></p>
+<p>使用 nginx 反向代理，根据访问的路径跳转到不同端口的服务中，nginx 监听端口为 9001</p>
+<p>　　访问  <a href="http://127.0.0.1:9001/edu/">http://127.0.0.1:9001/edu/</a> 　直接跳转到 127.0.0.1:8081<br>　　访问 <a href="http://127.0.0.1:9001/vod/">http://127.0.0.1:9001/vod/</a> 　直接跳转到 127.0.0.1:8082</p>
+<p><strong>②、准备工作：</strong></p>
+<p>　　准备两个 tomcat，一个 8081 端口，一个 8082 端口。编辑配置文件 ：/conf/server.xml 文件，修改相应的端口。修改完成并准备两个不同的测试页面。记得开放相应端口，tomcat8081端口：8081，tomcat8082端口：8082</p>
+
+
+<p><strong>③、修改配置文件和测试：</strong></p>
+
+
+<h3 id="B、负载均衡："><a href="#B、负载均衡：" class="headerlink" title="B、负载均衡："></a>B、负载均衡：</h3><h4 id="1、介绍：-1"><a href="#1、介绍：-1" class="headerlink" title="1、介绍："></a>1、介绍：</h4><p>　　单个服务器解决不了，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上。将负载分发到不同的服务器，也就是我们所说的负载均衡。</p>
+
+
+<h4 id="2、配置实现："><a href="#2、配置实现：" class="headerlink" title="2、配置实现："></a><strong>2、配置实现：</strong></h4><p>　　准备两台 tomcat 服务器，一台 8080，一台 8081。在两台 tomcat 里面 webapps 目录中，创建名称是 edu 文件夹，在 edu 文件夹中创建。页面 a.html，用于测试。页面内容可以不一样。用于辨别是否为同一个服务器。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这里指令块的名称可以随意指定，只要和下面的proxy_pass的值相同即可，通常配置为项目名</span><br><span class="line">upstream myserver &#123;  </span><br><span class="line">    server 208.208.128.122:8081; # 配置服务器的ip和端口</span><br><span class="line">    server 208.208.128.122:8082; #　未配置权重为轮询</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;; # 监听外部的端口号</span><br><span class="line">    server_name 192.168.0.226; # 域名或 ip </span><br><span class="line">    </span><br><span class="line">    location &#x2F; &#123; # 访问路径配置</span><br><span class="line">        proxy_pass http:&#x2F;&#x2F;myserver; # 对应上面的值</span><br><span class="line">        index  index.html index.htm; # 默认首页 </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3、策略介绍："><a href="#3、策略介绍：" class="headerlink" title="3、策略介绍："></a>3、策略介绍：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 权重配置方式：  </span><br><span class="line">upstream item &#123; # item名字可以自定义</span><br><span class="line">    server 192.168.101.60:81 weight&#x3D;1; </span><br><span class="line">    server 192.168.101.77:80 weight&#x3D;2;</span><br><span class="line">&#125;</span><br><span class="line"># weight的值越高被派发请求的概率也就越高，可以根据服务器配置的不同来设置。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 哈希分配，</span><br><span class="line">upstream item &#123; # item名字可以自定义</span><br><span class="line">	ip_hash;</span><br><span class="line">    server 192.168.101.60:81;</span><br><span class="line">    server 192.168.101.77:80;</span><br><span class="line">&#125;</span><br><span class="line"># 原理：他的根据客户端IP来分配服务器，比如我第一次访问请求被派发给了192.168.101.60这台服务器,那么我之后的请求就都会发送这台服务器上，这样的话session共享的问题也就解决了。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 最少连接分配</span><br><span class="line">upstream item &#123; # item名字可以自定义</span><br><span class="line">    least_conn;</span><br><span class="line">    server 192.168.101.60:81;</span><br><span class="line">    server 192.168.101.77:80;</span><br><span class="line">&#125;</span><br><span class="line"># 原理：根据上添加的服务器判断哪台服务器分的连接最少就把请求给谁。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 负载均衡响应时间最短算法，即利用插件，第三方方式，需要安装fair模块</span><br><span class="line">upstream webserver &#123;</span><br><span class="line">    server 10.18.14.59:8080;</span><br><span class="line">    server 10.18.14.109:8080;</span><br><span class="line">    server 10.18.3.197:8080;</span><br><span class="line">    fair;    #实现响应时间短的优先分配</span><br><span class="line">&#125;</span><br><span class="line">#　由于采用fair负载策略，配置weigth参数改变负载权重将无效。</span><br><span class="line"></span><br><span class="line"># 负载均衡url_hash算法</span><br><span class="line">upstream webserver &#123;</span><br><span class="line">    hash $request_uri;    #实现每个url定向到同一个后端服务器</span><br><span class="line">    server 10.18.14.59:8080;</span><br><span class="line">    server 10.18.14.109:8080;</span><br><span class="line">    server 10.18.3.197:8080;</span><br><span class="line">&#125;</span><br><span class="line">#　按请求url的hash结果来分配请求，使每个url定向到同一个后端服务器，服务器做缓存时比较有效。1.7.2版本以后，url_hash模块已经集成到．</span><br><span class="line"></span><br><span class="line">配置语法格式： server ip:端口 参数，常见参数有以下几个，具体参考官方文档：</span><br><span class="line">    weight 权重　　# weight &#x3D; 数值 (值越高被选中的概率也就越高)   </span><br><span class="line">    max_fails 失败多少次踢出队列　　# max_fails &#x3D; 数值</span><br><span class="line">    fail_timeout 踢出队列后重新探测时间  # fail_timeout &#x3D; 60s (s &#x3D; 秒)    </span><br><span class="line">    max_conns 最大连接数　# max_conns &#x3D; 800为防止单机性能过载可以根据实际情况设置</span><br><span class="line">    backup　备份机，所有服务器挂了之后才会生效</span><br><span class="line">    </span><br><span class="line">ｅｇ：server 192.168.0.100:8080 weight&#x3D;2 max_fails&#x3D;3 fail_timeout&#x3D;15;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C、动静分离："><a href="#C、动静分离：" class="headerlink" title="Ｃ、动静分离："></a>Ｃ、动静分离：</h3><h4 id="1、概念介绍："><a href="#1、概念介绍：" class="headerlink" title="1、概念介绍："></a>1、概念介绍：</h4><p>　　Nginx 动静分离简单来说就是把动态跟静态请求分开，不能理解成只是单纯的把动态页面和静态页面物理分离。严格意义上说应该是动态请求跟静态请求分开，可以理解成使用 Nginx</p>
+<p>处理静态页面，Tomcat 处理动态页面。动静分离从目前实现角度来讲大致分为两种，</p>
+<p>　　一种是纯粹把静态文件独立成单独的域名，放在独立的服务器上，也是目前主流推崇的方案；</p>
+<p>　　另外一种方法就是动态跟静态文件混合在一起发布，通过 nginx 来分开。通过 location 指定不同的后缀名实现不同的请求转发。通过 expires 参数设置，可以使浏览器缓存过期时间，减少与服务器之前的请求和流量。</p>
+<p>　　具体 Expires 定义：是给一个资源设定一个过期时间，也就是说无需去服务端验证，直接通过浏览器自身确认是否过期即可，所以不会产生额外的流量。此种方法非常适合不经常变动的资源。（如果经常更新的文件，不建议使用 Expires 来缓存），这里设置 3d，表示在这 3 天之内访问这个 URL，发送一个请求，比对服务器该文件最后更新时间没有变化，则不会从服务器抓取，返回状态码 304，如果有修改，则直接从服务器重新下载，返回状态码 200。</p>
+
+
+<h4 id="２、配置实现："><a href="#２、配置实现：" class="headerlink" title="２、配置实现："></a>２、配置实现：</h4><p><strong>①、准备工作：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">upstream taobaohost&#123; # 负载均衡</span><br><span class="line">         server 192.168.10.191:8081 weight&#x3D;8; # 指向Tomcat</span><br><span class="line">         server 192.168.10.191:8082 weight&#x3D;2; # 指向Tomcat</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">server &#123;</span><br><span class="line">       listen   80;</span><br><span class="line">       server_name www.taobao.com; # 代理域名</span><br><span class="line">       location &#x2F; &#123;        # 处理动态资源</span><br><span class="line">           proxy_pass http:&#x2F;&#x2F;taobaohost;</span><br><span class="line">    &#125;</span><br><span class="line">    # 处理静态资源</span><br><span class="line">       location ~ .*\.(js|css|ico|png|jpg|eot|svg|ttf|woff) &#123;</span><br><span class="line">          root &#x2F;servers&#x2F;taobao&#x2F;static;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>　　由于还没有创建静态资源的目录，所以此时打开域名，网页会出现版式错乱。这是因为访问后端服务时，因为需要加载静态资源文件，就触发了静态资源的访问规则，这个时候就会去 /servers/taobao/static 目录下面找，但实际上tomcat所需要的静态资源并不在该目录下，所以就找不到该资源，页面样式资源文件找不到报404也就不足为奇了。但是后端服务是可以正常访问的。通常情况下动静分离后的网站架构，后端只提供接口的访问服务，这里只是为了演示效果。</p>
+
+
+<p>　　解决这个问题，只需要创建存放静态资源的目录，并将静态资源放在该目录中。再次打开 网址的时候就正常了</p>
+
+
+
+
+
+
+
+
+<blockquote>
+<p>参考博客：</p>
+<p><a href="https://blog.csdn.net/qq_40036754/article/details/102463099">https://blog.csdn.net/qq_40036754/article/details/102463099</a></p>
+<p><a href="https://juejin.im/post/5e10998f5188253a937f417a#heading-20">https://juejin.im/post/5e10998f5188253a937f417a#heading-20</a></p>
+<p><a href="https://blog.csdn.net/zhaoxixc/article/details/84867695?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-5">https://blog.csdn.net/zhaoxixc/article/details/84867695?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-5</a></p>
+</blockquote>
 ]]></content>
       <categories>
-        <category>HTML</category>
-        <category>CSS</category>
+        <category>JavaWeb</category>
+        <category>Nginx</category>
       </categories>
       <tags>
-        <tag>休闲</tag>
-        <tag>娱乐</tag>
-        <tag>学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>3</title>
-    <url>/2020/07/05/3/</url>
-    <content><![CDATA[<p>保存并关闭文件。</p>
-<p>给文章添加“categories”属性</p>
-<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
-<h4 id="2-创建“标签”选项"><a href="#2-创建“标签”选项" class="headerlink" title="2. 创建“标签”选项"></a>2. 创建“标签”选项</h4><p>生成“标签”页并添加tpye属性</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page tags</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-22 14:22:08</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>添加type: “tags”到内容中，添加后是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">type: tags</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>保存并关闭文件。</p>
-<p>给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">categories: </span><br><span class="line">           - Hexo</span><br><span class="line">tags:</span><br><span class="line">           - 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>休闲</tag>
-        <tag>娱乐</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/07/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>first</title>
-    <url>/2020/06/29/first2/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page categories</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>categories文件夹下会有index.md这个文件，打开后默认内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-04-22 14:47:40</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>添加type: “categories”到内容中，添加后是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2019-04-24 15:30:30</span><br><span class="line">type: categories</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>保存并关闭文件。</p>
-<p>给文章添加“categories”属性</p>
-<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
-<h4 id="2-创建“标签”选项"><a href="#2-创建“标签”选项" class="headerlink" title="2. 创建“标签”选项"></a>2. 创建“标签”选项</h4><p>生成“标签”页并添加tpye属性</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new page tags</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>在tags文件夹下，找到index.md这个文件，打开后默认内容是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-22 14:22:08</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>添加type: “tags”到内容中，添加后是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">type: tags</span><br><span class="line">---</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>保存并关闭文件。</p>
-<p>给文章添加“tags”属性,打开需要添加标签的文章，为其添加tags属性。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-04-24 15:40:24</span><br><span class="line">categories: </span><br><span class="line">           - Hexo</span><br><span class="line">tags:</span><br><span class="line">           - 博客</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>作者：骑马纵天下<br>链接：<a href="https://juejin.im/post/5cc11c41f265da038f7745b5">https://juejin.im/post/5cc11c41f265da038f7745b5</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<ol>
-<li><p>设定菜单项的图标，对应的字段是 <code>menu_icons</code>。 此设定格式是 <code>item name: icon name</code>，其中 <code>item name</code> 与上一步所配置的菜单名字对应，<code>icon name</code> 是 Font Awesome 图标的 名字。而 <code>enable</code> 可用于控制是否显示图标，你可以设置成 <code>false</code> 来去掉图标。</p>
-<p>菜单图标配置示例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">menu_icons:</span><br><span class="line">  enable: true</span><br><span class="line">  # Icon Mapping.</span><br><span class="line">  home: home</span><br><span class="line">  about: user</span><br><span class="line">  categories: th</span><br><span class="line">  tags: tags</span><br><span class="line">  archives: archive</span><br><span class="line">  commonweal: heartbeat</span><br></pre></td></tr></table></figure>
-
-<p>在菜单图标开启的情况下，如果菜单项与菜单未匹配（没有设置或者无效的 Font Awesome 图标名字） 的情况下，NexT 将会使用 作为图标。</p>
-<p>请注意键值（如 <code>home</code>）的大小写要严格匹配</p>
-</li>
-</ol>
-<h3 id="设置-侧栏"><a href="#设置-侧栏" class="headerlink" title="设置 侧栏"></a>设置 侧栏</h3><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。 可以通过修改 <strong>主题配置文件</strong> 中的 <code>sidebar</code> 字段来控制侧栏的行为。侧栏的设置包括两个部分，其一是侧栏的位置， 其二是侧栏显示的时机。</p>
-<ol>
-<li><p>设置侧栏的位置，修改 <code>sidebar.position</code> 的值，支持的选项有：</p>
-<ul>
-<li>left - 靠左放置</li>
-<li>right - 靠右放置</li>
-</ul>
-<p>目前仅 Pisces Scheme 支持 <code>position</code> 配置。影响版本<strong>5.0.0</strong>及更低版本。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  position: left</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置侧栏显示的时机，修改 <code>sidebar.display</code> 的值，支持的选项有：</p>
-<ul>
-<li><code>post</code> - 默认行为，在文章页面（拥有目录列表）时显示</li>
-<li><code>always</code> - 在所有页面中都显示</li>
-<li><code>hide</code> - 在所有页面中都隐藏（可以手动展开）</li>
-<li><code>remove</code> - 完全移除</li>
-</ul>
-<p><img src="C:%5CUsers%5CMoMent%5CDesktop%5C2.jpg" alt="2"></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sidebar:</span><br><span class="line">  display: post</span><br></pre></td></tr></table></figure>
-
-<p>已知侧栏在 <code>use motion: false</code> 的情况下不会展示。 影响版本<strong>5.0.0</strong>及更低版本。</p>
-</li>
-</ol>
-<h3 id="设置-头像"><a href="#设置-头像" class="headerlink" title="设置 头像"></a>设置 头像</h3><p>编辑 <strong>主题配置文件</strong>， 修改字段 <code>avatar</code>， 值设置成头像的链接地址。其中，头像的链接地址可以是：</p>
-<table>
-<thead>
-<tr>
-<th align="left">地址</th>
-<th align="left">值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">完整的互联网 URI</td>
-<td align="left"><code>http://example.com/avatar.png</code></td>
-</tr>
-<tr>
-<td align="left">站点内的地址</td>
-<td align="left">将头像放置主题目录下的 <code>source/uploads/</code> （新建 uploads 目录若不存在） 配置为：<code>avatar: /uploads/avatar.png</code>或者 放置在 <code>source/images/</code> 目录下 配置为：<code>avatar: /images/avatar.png</code></td>
-</tr>
-</tbody></table>
-<p>头像设置示例</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">avatar: http:&#x2F;&#x2F;example.com&#x2F;avatar.png</span><br></pre></td></tr></table></figure>
-
-<h3 id="设置-作者昵称"><a href="#设置-作者昵称" class="headerlink" title="设置 作者昵称"></a>设置 作者昵称</h3><p>编辑 <strong>站点配置文件</strong>， 设置 <code>author</code> 为你的昵称。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jtzen9;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String str = <span class="string">"a"</span>;</span><br><span class="line">        <span class="keyword">long</span> time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str += <span class="string">"c"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"加号所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        String str2 = <span class="string">"a"</span>;</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            str2.concat(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"cancat方法所花费的时间："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">        time = System.currentTimeMillis();</span><br><span class="line">        StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder(<span class="string">"a"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            stringBuilder.append(<span class="string">"c"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        String str3 = stringBuilder.toString();</span><br><span class="line">        System.out.println(<span class="string">"StringBuilder的append方法："</span>);</span><br><span class="line">        System.out.println(System.currentTimeMillis()-time);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>尽力就好</p>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>休闲</tag>
-        <tag>娱乐</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
 </search>

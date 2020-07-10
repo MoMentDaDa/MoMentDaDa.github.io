@@ -1290,13 +1290,10 @@ img:hover {
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;
-  transition-delay: 0s;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #2eb6ff;
+  background: #0dc2ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2833,9 +2830,13 @@ ul.breadcrumb li + li:last-child {
     margin: 8px 0 0;
   }
 }
-.main-inner {
-  opacity: 0.9;
-}
+/* .main-inner { 
+    margin-top: 60px;
+    padding: 60px 60px 60px 60px;
+    background: #fff;
+    opacity: 0.9;
+    min-height: 500px;
+} */
 .header-inner {
   opacity: 0.9;
 }

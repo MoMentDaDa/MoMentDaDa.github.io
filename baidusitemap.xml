@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite.com/2020/07/05/3/</loc>
-    <lastmod>2020-07-05</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/06/30/2/</loc>
-    <lastmod>2020-06-30</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/06/29/first2/</loc>
-    <lastmod>2020-06-30</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/06/29/first/</loc>
-    <lastmod>2020-06-29</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/07/06/hello-world/</loc>
-    <lastmod>2020-06-29</lastmod>
+    <loc>http://yoursite.com/posts/cf99e1c1.html</loc>
+    <lastmod>2020-07-09</lastmod>
   </url>
 </urlset>

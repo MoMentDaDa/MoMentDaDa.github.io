@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、索引库的维护：　　上一篇有介绍过索引库是如何建立以及 filed 的详解。对于索引库的维护，其本质就是对 filed 的增删改。所以理解 filed 对于掌握索引库的维护很重要。话不多说，直接上代码。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lucene第二篇">
+<meta property="og:url" content="http://yoursite.com/posts/2d0d7a93.html">
+<meta property="og:site_name" content="MoMent">
+<meta property="og:description" content="一、索引库的维护：　　上一篇有介绍过索引库是如何建立以及 filed 的详解。对于索引库的维护，其本质就是对 filed 的增删改。所以理解 filed 对于掌握索引库的维护很重要。话不多说，直接上代码。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-23T13:51:46.000Z">
+<meta property="article:modified_time" content="2020-09-27T13:44:02.293Z">
+<meta property="article:author" content="汪哒哒">
+<meta property="article:tag" content="lucene">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/posts/2d0d7a93.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>lucene第二篇 | MoMent</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MoMent" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <!-- gitHub fork图标 -->
+    <a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MoMent</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">宁静致远</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/2d0d7a93.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="汪哒哒">
+      <meta itemprop="description" content="日常点滴和学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MoMent">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          lucene第二篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-23 21:51:46" itemprop="dateCreated datePublished" datetime="2020-07-23T21:51:46+08:00">2020-07-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">搜索框架</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/lucene/" itemprop="url" rel="index"><span itemprop="name">lucene</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/2d0d7a93.html" class="post-meta-item leancloud_visitors" data-flag-title="lucene第二篇" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/2d0d7a93.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/2d0d7a93.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>19k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、索引库的维护："><a href="#一、索引库的维护：" class="headerlink" title="一、索引库的维护："></a>一、索引库的维护：</h2><p>　　上一篇有介绍过索引库是如何建立以及 filed 的详解。对于索引库的维护，其本质就是对 filed 的增删改。所以理解 filed 对于掌握索引库的维护很重要。话不多说，直接上代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IndexWriter indexWriter;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化分析器</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个IndexWriter对象，需要使用IKAnalyzer作为分析器</span></span><br><span class="line">        indexWriter = <span class="keyword">new</span> IndexWriter(FSDirectory.open(<span class="keyword">new</span> File(<span class="string">"F:\\IDEAProject\\JavaWeb\\13_Search\\Index"</span>).toPath()),</span><br><span class="line">                <span class="keyword">new</span> IndexWriterConfig(<span class="keyword">new</span> IKAnalyzer()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加域</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addDocument</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个IndexWriter对象，需要使用IKAnalyzer作为分析器</span></span><br><span class="line">        IndexWriter indexWriter = <span class="keyword">new</span> IndexWriter(FSDirectory.open(</span><br><span class="line">                <span class="keyword">new</span> File(<span class="string">"F:\\IDEAProject\\JavaWeb\\13_Search\\Index"</span>).toPath()), <span class="keyword">new</span> IndexWriterConfig(<span class="keyword">new</span> IKAnalyzer()));</span><br><span class="line">        <span class="comment">//创建一个Document对象</span></span><br><span class="line">        Document document = <span class="keyword">new</span> Document();</span><br><span class="line">        <span class="comment">//向document对象中添加域</span></span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name"</span>, <span class="string">"新添加的文件"</span>, Field.Store.YES));</span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"content"</span>, <span class="string">"新添加的文件内容"</span>, Field.Store.NO));</span><br><span class="line">        document.add(<span class="keyword">new</span> StoredField(<span class="string">"path"</span>, <span class="string">"c:/temp/helo"</span>));</span><br><span class="line">        <span class="comment">// 把文档写入索引库</span></span><br><span class="line">        indexWriter.addDocument(document);</span><br><span class="line">        <span class="comment">//关闭索引库</span></span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 清空域</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAllDocument</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//删除全部文档</span></span><br><span class="line">        indexWriter.deleteAll();</span><br><span class="line">        <span class="comment">//关闭索引库</span></span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除指定索引</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteDocumentByQuery</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        indexWriter.deleteDocuments(<span class="keyword">new</span> Term(<span class="string">"name"</span>, <span class="string">"apache"</span>));</span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新索引，先删除后添加</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateDocument</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个新的文档对象</span></span><br><span class="line">        Document document = <span class="keyword">new</span> Document();</span><br><span class="line">        <span class="comment">//向文档对象中添加域</span></span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name"</span>, <span class="string">"更新之后的文档"</span>, Field.Store.YES));</span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name1"</span>, <span class="string">"更新之后的文档2"</span>, Field.Store.YES));</span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name2"</span>, <span class="string">"更新之后的文档3"</span>, Field.Store.YES));</span><br><span class="line">        <span class="comment">//更新操作</span></span><br><span class="line">        indexWriter.updateDocument(<span class="keyword">new</span> Term(<span class="string">"name"</span>, <span class="string">"spring"</span>), document);</span><br><span class="line">        <span class="comment">//关闭索引库</span></span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、搜索结果处理："><a href="#二、搜索结果处理：" class="headerlink" title="二、搜索结果处理："></a>二、搜索结果处理：</h2><p>　　我们常常在网站搜索时，可以看见各个网站都对结果的相关词进行了高亮的处理，在视觉上让人便于查找有搜索对应的文本块，同时界面展示更友好清晰明了。lucene 提供了 highlighter 插件来体现类似的效果，该插件可以对查询关键字高亮处理。</p>
+<p>　　highlighter 包含了用于处理结果页查询内容高亮显示的功能，其中 Highlighter 类 highlighter 包的核心组件，借助 Fragmenter, fragment Scorer, 和 Formatter 等类来支持用户自定义高亮展示的功能；</p>
+<h3 id="A、主程序："><a href="#A、主程序：" class="headerlink" title="A、主程序："></a>A、主程序：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HighlighterTest</span> </span>&#123;</span><br><span class="line">	  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		IndexSearcher searcher;</span><br><span class="line">		TopDocs docs; </span><br><span class="line">		ExecutorService service = Executors.newCachedThreadPool();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			searcher = SearchUtil.getMultiSearcher(<span class="string">"index"</span>, service);</span><br><span class="line">	        Term term = <span class="keyword">new</span> Term(<span class="string">"content"</span>,<span class="keyword">new</span> BytesRef(<span class="string">"lucene"</span>));</span><br><span class="line">	        TermQuery termQuery = <span class="keyword">new</span> TermQuery(term);</span><br><span class="line">	        docs = SearchUtil.getScoreDocsByPerPage(<span class="number">1</span>, <span class="number">30</span>, searcher, termQuery);</span><br><span class="line">			ScoreDoc[] hits = docs.scoreDocs;</span><br><span class="line">	        QueryScorer scorer = <span class="keyword">new</span> QueryScorer(termQuery);</span><br><span class="line">	        SimpleHTMLFormatter simpleHtmlFormatter = <span class="keyword">new</span> SimpleHTMLFormatter(<span class="string">"&lt;B&gt;"</span>,<span class="string">"&lt;/B&gt;"</span>);<span class="comment">//设定高亮显示的格式&lt;B&gt;keyword&lt;/B&gt;,此为默认的格式  </span></span><br><span class="line">	        Highlighter highlighter = <span class="keyword">new</span> Highlighter(simpleHtmlFormatter,scorer);   </span><br><span class="line">	        highlighter.setTextFragmenter(<span class="keyword">new</span> SimpleFragmenter(<span class="number">20</span>));<span class="comment">//设置每次返回的字符数</span></span><br><span class="line">	        Analyzer analyzer = <span class="keyword">new</span> StandardAnalyzer();</span><br><span class="line">	        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;hits.length;i++)&#123;   </span><br><span class="line">	            Document doc = searcher.doc(hits[i].doc);   </span><br><span class="line">	            String str = highlighter.getBestFragment(analyzer, <span class="string">"content"</span>, doc.get(<span class="string">"content"</span>)) ;</span><br><span class="line">	            System.out.println(str);   </span><br><span class="line">	        &#125;   </span><br><span class="line"> </span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InvalidTokenOffsetsException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			service.shutdown();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="B、评分算法·："><a href="#B、评分算法·：" class="headerlink" title="B、评分算法·："></a>B、评分算法·：</h3><p>　　lucene的highlighter高亮展示的原理：</p>
+<ul>
+<li>根据 Formatter 和 Scorer 创建highlighter对象，formatter 定义了高亮的显示方式，而 scorer 定义了高亮的评分；</li>
+</ul>
+<ul>
+<li>评分的算法是先根据 term 的评分值获取对应的document的权重，在此基础上对文本的内容进行轮询，获取对应的文本出现的次数，和它在term对应的文本中出现的位置（便于高亮处理），评分并分词的算法为：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getTokenScore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    position += posIncAtt.getPositionIncrement();<span class="comment">//记录出现的位置</span></span><br><span class="line">    String termText = termAtt.toString();</span><br><span class="line"> </span><br><span class="line">    WeightedSpanTerm weightedSpanTerm;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> ((weightedSpanTerm = fieldWeightedSpanTerms.get(</span><br><span class="line">              termText)) == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (weightedSpanTerm.positionSensitive &amp;&amp;</span><br><span class="line">          !weightedSpanTerm.checkPosition(position)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">float</span> score = weightedSpanTerm.getWeight();<span class="comment">//获取权重</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// found a query term - is it unique in this doc?</span></span><br><span class="line">    <span class="keyword">if</span> (!foundTerms.contains(termText)) &#123;<span class="comment">//结果排重处理</span></span><br><span class="line">      totalScore += score;</span><br><span class="line">      foundTerms.add(termText);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> score;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C、高亮算法："><a href="#C、高亮算法：" class="headerlink" title="C、高亮算法："></a>C、高亮算法：</h3><p>　　formatter的原理为：对搜索的文本进行判断，如果scorer获取的totalScore不小于0，即查询内容在对应的term中存在，则按照格式拼接成preTag+查询内容+postTag的格式。其默认格式为“<B></B>”的形式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">highlightTerm</span><span class="params">(String originalText, TokenGroup tokenGroup)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tokenGroup.getTotalScore() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> originalText;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// Allocate StringBuilder with the right number of characters from the</span></span><br><span class="line">    <span class="comment">// beginning, to avoid char[] allocations in the middle of appends.</span></span><br><span class="line">    StringBuilder returnBuffer = <span class="keyword">new</span> StringBuilder(preTag.length() + originalText.length() + postTag.length());</span><br><span class="line">    returnBuffer.append(preTag);</span><br><span class="line">    returnBuffer.append(originalText);</span><br><span class="line">    returnBuffer.append(postTag);</span><br><span class="line">    <span class="keyword">return</span> returnBuffer.toString();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="D、流程解释："><a href="#D、流程解释：" class="headerlink" title="D、流程解释："></a>D、流程解释：</h3><p>　　Highlighter根据 scorer 和 formatter，对 document 进行分析，查询结果调用 getBestTextFragments，TokenStream、String text、boolean mergeContiguousFragments,int maxNumFragments)，其过程如下：</p>
+<ul>
+<li>scorer首先初始化查询内容对应的出现位置的下标，然后对tokenstream添加PositionIncrementAttribute，此类记录单词出现的位置；</li>
+<li>对文本内容进行轮询，判断查询的文本长度是否超出限制，如果超出文本长度提示过长内容；</li>
+<li>如果获取到指定的文本，先对单次查询的内容进行内容的截取（截取值根据setTextFragmenter指定的值决定），再调用formatter的highlightTerm方法对文本进行重新构建</li>
+<li>在本次轮询和下次单词出现之前对文本内容进行处理</li>
+</ul>
+<h3 id="E、工具类："><a href="#E、工具类：" class="headerlink" title="E、工具类："></a>E、工具类：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br></pre></td><td class="code"><pre><span class="line">public class SearchUtil &#123;</span><br><span class="line">	&#x2F;&#x2F; 获取IndexSearcher对象</span><br><span class="line">	public static IndexSearcher getIndexSearcherByParentPath(String parentPath,ExecutorService service) throws IOException&#123;</span><br><span class="line">		MultiReader reader &#x3D; null;</span><br><span class="line">		&#x2F;&#x2F;设置</span><br><span class="line">		try &#123;</span><br><span class="line">			File[] files &#x3D; new File(parentPath).listFiles();</span><br><span class="line">			IndexReader[] readers &#x3D; new IndexReader[files.length];</span><br><span class="line">			for (int i &#x3D; 0 ; i &lt; files.length ; i ++) &#123;</span><br><span class="line">				readers[i] &#x3D; DirectoryReader.open(FSDirectory.open(Paths.get(files[i].getPath(), new String[0])));</span><br><span class="line">			&#125;</span><br><span class="line">			reader &#x3D; new MultiReader(readers);</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			&#x2F;&#x2F; TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return new IndexSearcher(reader,service);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 多目录多线程查询</span><br><span class="line">	public static IndexSearcher getMultiSearcher(String parentPath,ExecutorService service) throws IOException&#123;</span><br><span class="line">		File file &#x3D; new File(parentPath);</span><br><span class="line">		File[] files &#x3D; file.listFiles();</span><br><span class="line">		IndexReader[] readers &#x3D; new IndexReader[files.length];</span><br><span class="line">		for (int i &#x3D; 0 ; i &lt; files.length ; i ++) &#123;</span><br><span class="line">			readers[i] &#x3D; DirectoryReader.open(FSDirectory.open(Paths.get(files[i].getPath(), new String[0])));</span><br><span class="line">		&#125;</span><br><span class="line">		MultiReader multiReader &#x3D; new MultiReader(readers);</span><br><span class="line">		IndexSearcher searcher &#x3D; new IndexSearcher(multiReader,service);</span><br><span class="line">		return searcher;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 根据索引路径获取IndexReader</span><br><span class="line">	public static DirectoryReader getIndexReader(String indexPath) throws IOException&#123;</span><br><span class="line">		return DirectoryReader.open(FSDirectory.open(Paths.get(indexPath, new String[0])));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 根据索引路径获取IndexSearcher</span><br><span class="line">	public static IndexSearcher getIndexSearcherByIndexPath(String indexPath,ExecutorService service) throws IOException&#123;</span><br><span class="line">		IndexReader reader &#x3D; getIndexReader(indexPath);</span><br><span class="line">		return new IndexSearcher(reader,service);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 如果索引目录会有变更用此方法获取新的IndexSearcher这种方式会占用较少的资源</span><br><span class="line">	public static IndexSearcher getIndexSearcherOpenIfChanged(IndexSearcher oldSearcher,ExecutorService service) throws IOException&#123;</span><br><span class="line">		DirectoryReader reader &#x3D; (DirectoryReader) oldSearcher.getIndexReader();</span><br><span class="line">		DirectoryReader newReader &#x3D; DirectoryReader.openIfChanged(reader);</span><br><span class="line">		return new IndexSearcher(newReader, service);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 多条件查询类似于sql in</span><br><span class="line">	public static Query getMultiQueryLikeSqlIn(Query ... querys)&#123;</span><br><span class="line">		BooleanQuery query &#x3D; new BooleanQuery();</span><br><span class="line">		for (Query subQuery : querys) &#123;</span><br><span class="line">			query.add(subQuery,Occur.SHOULD);</span><br><span class="line">		&#125;</span><br><span class="line">		return query;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 多条件查询类似于sql and</span><br><span class="line">	public static Query getMultiQueryLikeSqlAnd(Query ... querys)&#123;</span><br><span class="line">		BooleanQuery query &#x3D; new BooleanQuery();</span><br><span class="line">		for (Query subQuery : querys) &#123;</span><br><span class="line">			query.add(subQuery,Occur.MUST);</span><br><span class="line">		&#125;</span><br><span class="line">		return query;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 从指定配置项中查询</span><br><span class="line">	public static Query getQuery(String field,String fieldType,String queryStr,boolean range)&#123;</span><br><span class="line">		Query q &#x3D; null;</span><br><span class="line">		try &#123;</span><br><span class="line">			if(queryStr !&#x3D; null &amp;&amp; !&quot;&quot;.equals(queryStr))&#123;</span><br><span class="line">				if(range)&#123;</span><br><span class="line">					String[] strs &#x3D; queryStr.split(&quot;\\|&quot;);</span><br><span class="line">					if(&quot;int&quot;.equals(fieldType))&#123;</span><br><span class="line">						int min &#x3D; new Integer(strs[0]);</span><br><span class="line">						int max &#x3D; new Integer(strs[1]);</span><br><span class="line">						q &#x3D; NumericRangeQuery.newIntRange(field, min, max, true, true);</span><br><span class="line">					&#125;else if(&quot;double&quot;.equals(fieldType))&#123;</span><br><span class="line">						Double min &#x3D; new Double(strs[0]);</span><br><span class="line">						Double max &#x3D; new Double(strs[1]);</span><br><span class="line">						q &#x3D; NumericRangeQuery.newDoubleRange(field, min, max, true, true);</span><br><span class="line">					&#125;else if(&quot;float&quot;.equals(fieldType))&#123;</span><br><span class="line">						Float min &#x3D; new Float(strs[0]);</span><br><span class="line">						Float max &#x3D; new Float(strs[1]);</span><br><span class="line">						q &#x3D; NumericRangeQuery.newFloatRange(field, min, max, true, true);</span><br><span class="line">					&#125;else if(&quot;long&quot;.equals(fieldType))&#123;</span><br><span class="line">						Long min &#x3D; new Long(strs[0]);</span><br><span class="line">						Long max &#x3D; new Long(strs[1]);</span><br><span class="line">						q &#x3D; NumericRangeQuery.newLongRange(field, min, max, true, true);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;else&#123;</span><br><span class="line">					if(&quot;int&quot;.equals(fieldType))&#123;</span><br><span class="line">						q &#x3D; NumericRangeQuery.newIntRange(field, new Integer(queryStr), new Integer(queryStr), true, true);</span><br><span class="line">					&#125;else if(&quot;double&quot;.equals(fieldType))&#123;</span><br><span class="line">						q &#x3D; NumericRangeQuery.newDoubleRange(field, new Double(queryStr), new Double(queryStr), true, true);</span><br><span class="line">					&#125;else if(&quot;float&quot;.equals(fieldType))&#123;</span><br><span class="line">						q &#x3D; NumericRangeQuery.newFloatRange(field, new Float(queryStr), new Float(queryStr), true, true);</span><br><span class="line">					&#125;else&#123;</span><br><span class="line">						Analyzer analyzer &#x3D; new StandardAnalyzer();</span><br><span class="line">						q &#x3D; new QueryParser(field, analyzer).parse(queryStr);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				q&#x3D; new MatchAllDocsQuery();</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(q);</span><br><span class="line">		&#125; catch (ParseException e) &#123;</span><br><span class="line">			&#x2F;&#x2F; TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return q;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 根据field和值获取对应的内容</span><br><span class="line">	public static Query getQuery(String fieldName,Object fieldValue)&#123;</span><br><span class="line">		Term term &#x3D; new Term(fieldName, new BytesRef(fieldValue.toString()));</span><br><span class="line">		return new TermQuery(term);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 根据IndexSearcher和docID获取默认的document</span><br><span class="line">	public static Document getDefaultFullDocument(IndexSearcher searcher,int docID) throws IOException&#123;</span><br><span class="line">		return searcher.doc(docID);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 根据IndexSearcher和docID</span><br><span class="line">	public static Document getDocumentByListField(IndexSearcher searcher,int docID,Set&lt;String&gt; listField) throws IOException&#123;</span><br><span class="line">		return searcher.doc(docID, listField);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 分页查询</span><br><span class="line">	public static TopDocs getScoreDocsByPerPage(int page,int perPage,IndexSearcher searcher,Query query) throws IOException&#123;</span><br><span class="line">		TopDocs result &#x3D; null;</span><br><span class="line">		if(query &#x3D;&#x3D; null)&#123;</span><br><span class="line">			System.out.println(&quot; Query is null return null &quot;);</span><br><span class="line">			return null;</span><br><span class="line">		&#125;</span><br><span class="line">		ScoreDoc before &#x3D; null;</span><br><span class="line">		if(page !&#x3D; 1)&#123;</span><br><span class="line">			TopDocs docsBefore &#x3D; searcher.search(query, (page-1)*perPage);</span><br><span class="line">			ScoreDoc[] scoreDocs &#x3D; docsBefore.scoreDocs;</span><br><span class="line">			if(scoreDocs.length &gt; 0)&#123;</span><br><span class="line">				before &#x3D; scoreDocs[scoreDocs.length - 1];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		result &#x3D; searcher.searchAfter(before, query, perPage);</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">	public static TopDocs getScoreDocs(IndexSearcher searcher,Query query) throws IOException&#123;</span><br><span class="line">		TopDocs docs &#x3D; searcher.search(query, getMaxDocId(searcher));</span><br><span class="line">		return docs;</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F; 高亮显示字段</span><br><span class="line">	public static String[] highlighter(IndexSearcher searcher,String field,String keyword,String preTag, String postTag,int fragmentSize) throws IOException, InvalidTokenOffsetsException&#123;</span><br><span class="line">		Term term &#x3D; new Term(&quot;content&quot;,new BytesRef(&quot;lucene&quot;));</span><br><span class="line">        TermQuery termQuery &#x3D; new TermQuery(term);</span><br><span class="line">        TopDocs docs &#x3D; getScoreDocs(searcher, termQuery);</span><br><span class="line">        ScoreDoc[] hits &#x3D; docs.scoreDocs;</span><br><span class="line">        QueryScorer scorer &#x3D; new QueryScorer(termQuery);</span><br><span class="line">        SimpleHTMLFormatter simpleHtmlFormatter &#x3D; new SimpleHTMLFormatter(preTag,postTag);&#x2F;&#x2F;设定高亮显示的格式&lt;B&gt;keyword&lt;&#x2F;B&gt;,此为默认的格式  </span><br><span class="line">        Highlighter highlighter &#x3D; new Highlighter(simpleHtmlFormatter,scorer);   </span><br><span class="line">        highlighter.setTextFragmenter(new SimpleFragmenter(fragmentSize));&#x2F;&#x2F;设置每次返回的字符数</span><br><span class="line">        Analyzer analyzer &#x3D; new StandardAnalyzer();</span><br><span class="line">        String[] result &#x3D; new String[hits.length];</span><br><span class="line">        for (int i &#x3D; 0; i &lt; result.length ; i++) &#123;</span><br><span class="line">			Document doc &#x3D; searcher.doc(hits[i].doc);</span><br><span class="line">			result[i] &#x3D; highlighter.getBestFragment(analyzer, field, doc.get(field));</span><br><span class="line">		&#125;</span><br><span class="line">        return result;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	&#x2F;&#x2F; 统计document的数量,此方法等同于matchAllDocsQuery查询</span><br><span class="line">	public static int getMaxDocId(IndexSearcher searcher)&#123;</span><br><span class="line">		return searcher.getIndexReader().maxDoc();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、多线程索引建立："><a href="#三、多线程索引建立：" class="headerlink" title="三、多线程索引建立："></a>三、多线程索引建立：</h2><h3 id="A、构建的细节："><a href="#A、构建的细节：" class="headerlink" title="A、构建的细节："></a>A、构建的细节：</h3><p>　　在创建索引的期间有一个 ThreadState 类型的读写锁，lucene 判断 ThreadState 的状态，如果此锁被激活，从内存中获取document并更新到索引文件且重置内存中索引的数量和状态，最后释放相关的资源。lucene 索引的建立，跟以下几点关联很大：</p>
+<ul>
+<li>磁盘空间大小，这个直接影响索引的建立，甚至会造成索引写入提示完成，但是没有同步的问题；</li>
+<li>索引合并策略的选择，这个类似于sql里边的批量操作，批量操作的数量过多直接影响执行效率，对于lucene来讲，索引合并前是将document放在内存中，因此选择合适的合并策略也可以提升索引的效率；</li>
+<li>唯一索引对应的term的选择，lucene索引的创建过程中是先从索引中删除包含相同term的document然后重新添加document到索引中，这里如果term对应的document过多，会占用磁盘IO，同时造成IndexWriter的写锁占用时间延长，相应的执行效率低下； </li>
+</ul>
+<h3 id="B、FileBean："><a href="#B、FileBean：" class="headerlink" title="B、FileBean："></a>B、FileBean：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> # FileBean来存储文件信息，</span><br><span class="line"><span class="keyword">package</span> com.lucene.bean;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileBean</span> </span>&#123;</span><br><span class="line">	<span class="comment">//路径</span></span><br><span class="line">	<span class="keyword">private</span> String path;</span><br><span class="line">	<span class="comment">//修改时间</span></span><br><span class="line">	<span class="keyword">private</span> Long modified;</span><br><span class="line">	<span class="comment">//内容</span></span><br><span class="line">	<span class="keyword">private</span> String content;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 定义一个工具类，用以将文件夹的信息遍历读取并转换成 FileBean 的集合</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileUtil</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">// 读取文件信息和下属文件夹</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;FileBean&gt; <span class="title">getFolderFiles</span><span class="params">(String folder)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		List&lt;FileBean&gt; fileBeans = <span class="keyword">new</span> LinkedList&lt;FileBean&gt;();</span><br><span class="line">		File file = <span class="keyword">new</span> File(folder);</span><br><span class="line">		<span class="keyword">if</span>(file.isDirectory())&#123;</span><br><span class="line">			File[] files = file.listFiles();</span><br><span class="line">			<span class="keyword">if</span>(files != <span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">for</span> (File file2 : files) &#123;</span><br><span class="line">					fileBeans.addAll(getFolderFiles(file2.getAbsolutePath()));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			FileBean bean = <span class="keyword">new</span> FileBean();</span><br><span class="line">			bean.setPath(file.getAbsolutePath());</span><br><span class="line">			bean.setModified(file.lastModified());</span><br><span class="line">			bean.setContent(<span class="keyword">new</span> String(Files.readAllBytes(Paths.get(folder))));</span><br><span class="line">			fileBeans.add(bean);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> fileBeans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="C、索引处理类："><a href="#C、索引处理类：" class="headerlink" title="C、索引处理类："></a>C、索引处理类：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lucene.index;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.text.ParseException;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.apache.lucene.index.IndexWriter;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseIndex</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">	<span class="comment">// 父级索引路径</span></span><br><span class="line">	<span class="keyword">private</span> String parentIndexPath;</span><br><span class="line">	<span class="comment">// 索引编写器</span></span><br><span class="line">	<span class="keyword">private</span> IndexWriter writer;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> subIndex;</span><br><span class="line">	<span class="comment">// 主线程</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> CountDownLatch countDownLatch1;  </span><br><span class="line">	<span class="comment">//工作线程 </span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> CountDownLatch countDownLatch2; </span><br><span class="line">	<span class="comment">// 对象列表</span></span><br><span class="line">	<span class="keyword">private</span> List&lt;T&gt; list;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BaseIndex</span><span class="params">(IndexWriter writer,CountDownLatch countDownLatch1, CountDownLatch countDownLatch2,</span></span></span><br><span class="line"><span class="function"><span class="params">			List&lt;T&gt; list)</span></span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.writer = writer;</span><br><span class="line">		<span class="keyword">this</span>.countDownLatch1 = countDownLatch1;</span><br><span class="line">		<span class="keyword">this</span>.countDownLatch2 = countDownLatch2;</span><br><span class="line">		<span class="keyword">this</span>.list = list;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BaseIndex</span><span class="params">(String parentIndexPath, <span class="keyword">int</span> subIndex,</span></span></span><br><span class="line"><span class="function"><span class="params">			CountDownLatch countDownLatch1, CountDownLatch countDownLatch2,</span></span></span><br><span class="line"><span class="function"><span class="params">			List&lt;T&gt; list)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.parentIndexPath = parentIndexPath;</span><br><span class="line">		<span class="keyword">this</span>.subIndex = subIndex;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//多目录索引创建</span></span><br><span class="line">			File file = <span class="keyword">new</span> File(parentIndexPath+<span class="string">"/index"</span>+subIndex);</span><br><span class="line">			<span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">				file.mkdir();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">this</span>.writer = IndexUtil.getIndexWriter(parentIndexPath+<span class="string">"/index"</span>+subIndex, <span class="keyword">true</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">this</span>.subIndex = subIndex;</span><br><span class="line">		<span class="keyword">this</span>.countDownLatch1 = countDownLatch1;</span><br><span class="line">		<span class="keyword">this</span>.countDownLatch2 = countDownLatch2;</span><br><span class="line">		<span class="keyword">this</span>.list = list;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">BaseIndex</span><span class="params">(String path,CountDownLatch countDownLatch1, CountDownLatch countDownLatch2,</span></span></span><br><span class="line"><span class="function"><span class="params">			List&lt;T&gt; list)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="comment">//单目录索引创建</span></span><br><span class="line">			File file = <span class="keyword">new</span> File(path);</span><br><span class="line">			<span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">				file.mkdir();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">this</span>.writer = IndexUtil.getIndexWriter(path,<span class="keyword">true</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;;</span><br><span class="line">		<span class="keyword">this</span>.countDownLatch1 = countDownLatch1;</span><br><span class="line">		<span class="keyword">this</span>.countDownLatch2 = countDownLatch2;</span><br><span class="line">		<span class="keyword">this</span>.list = list;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 创建索引</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">indexDoc</span><span class="params">(IndexWriter writer,T t)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">	<span class="comment">// 批量索引创建</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">indexDocs</span><span class="params">(IndexWriter writer,List&lt;T&gt; t)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (T t2 : t) &#123;</span><br><span class="line">			indexDoc(writer,t2);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			countDownLatch1.await();</span><br><span class="line">			System.out.println(writer);</span><br><span class="line">			indexDocs(writer,list);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			countDownLatch2.countDown();</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				writer.commit();</span><br><span class="line">				writer.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="D、索引创建："><a href="#D、索引创建：" class="headerlink" title="D、索引创建："></a>D、索引创建：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileBeanIndex</span> <span class="keyword">extends</span> <span class="title">BaseIndex</span>&lt;<span class="title">FileBean</span>&gt;</span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FileBeanIndex</span><span class="params">(IndexWriter writer, CountDownLatch countDownLatch1,</span></span></span><br><span class="line"><span class="function"><span class="params">			CountDownLatch countDownLatch2, List&lt;FileBean&gt; list)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(writer, countDownLatch1, countDownLatch2, list);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FileBeanIndex</span><span class="params">(String parentIndexPath, <span class="keyword">int</span> subIndex, CountDownLatch countDownLatch1,</span></span></span><br><span class="line"><span class="function"><span class="params">			CountDownLatch countDownLatch2, List&lt;FileBean&gt; list)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(parentIndexPath, subIndex, countDownLatch1, countDownLatch2, list);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">indexDoc</span><span class="params">(IndexWriter writer, FileBean t)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Document doc = <span class="keyword">new</span> Document();</span><br><span class="line">		System.out.println(t.getPath());</span><br><span class="line">		doc.add(<span class="keyword">new</span> StringField(<span class="string">"path"</span>, t.getPath(), Field.Store.YES));</span><br><span class="line">		doc.add(<span class="keyword">new</span> LongField(<span class="string">"modified"</span>, t.getModified(), Field.Store.YES));</span><br><span class="line">		doc.add(<span class="keyword">new</span> TextField(<span class="string">"content"</span>, t.getContent(), Field.Store.YES));</span><br><span class="line">		<span class="keyword">if</span> (writer.getConfig().getOpenMode() == IndexWriterConfig.OpenMode.CREATE)&#123;</span><br><span class="line">	        writer.addDocument(doc);</span><br><span class="line">	    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	    	writer.updateDocument(<span class="keyword">new</span> Term(<span class="string">"path"</span>, t.getPath()), doc);</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="E、合并索引："><a href="#E、合并索引：" class="headerlink" title="E、合并索引："></a>E、合并索引：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class IndexUtil &#123;</span><br><span class="line">	&#x2F;&#x2F; 创建索引写入器</span><br><span class="line">	public static IndexWriter getIndexWriter(String indexPath,boolean create) throws IOException&#123;</span><br><span class="line">		Directory dir &#x3D; FSDirectory.open(Paths.get(indexPath, new String[0]));</span><br><span class="line">	    Analyzer analyzer &#x3D; new StandardAnalyzer();</span><br><span class="line">	    IndexWriterConfig iwc &#x3D; new IndexWriterConfig(analyzer);</span><br><span class="line">	    LogMergePolicy mergePolicy &#x3D; new LogByteSizeMergePolicy();</span><br><span class="line">	    &#x2F;&#x2F;设置segment添加文档(Document)时的合并频率          &#x2F;&#x2F;值较小,建立索引的速度就较慢          &#x2F;&#x2F;值较大,建立索引的速度就较快,&gt;10适合批量建立索引        </span><br><span class="line">	    mergePolicy.setMergeFactor(50);                     </span><br><span class="line">	    &#x2F;&#x2F;设置segment最大合并文档(Document)数         </span><br><span class="line">	    &#x2F;&#x2F;值较小有利于追加索引的速度         </span><br><span class="line">	    &#x2F;&#x2F;值较大,适合批量建立索引和更快的搜索         </span><br><span class="line">	    mergePolicy.setMaxMergeDocs(5000);                     </span><br><span class="line">	    if (create)&#123;</span><br><span class="line">	        iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE);</span><br><span class="line">	    &#125;else &#123;</span><br><span class="line">	        iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE_OR_APPEND);</span><br><span class="line">	    &#125;</span><br><span class="line">	    IndexWriter writer &#x3D; new IndexWriter(dir, iwc);</span><br><span class="line">	    return writer;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="F、测试类："><a href="#F、测试类：" class="headerlink" title="F、测试类："></a>F、测试类：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestIndex</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			List&lt;FileBean&gt; fileBeans = FileUtil.getFolderFiles(<span class="string">"C:\\Users\\lenovo\\Desktop\\lucene\\lucene-5.1.0"</span>);</span><br><span class="line">			<span class="keyword">int</span> totalCount = fileBeans.size();</span><br><span class="line">			<span class="keyword">int</span> perThreadCount = <span class="number">3000</span>;</span><br><span class="line">			System.out.println(<span class="string">"查询到的数据总数是"</span>+fileBeans.size());</span><br><span class="line">			<span class="keyword">int</span> threadCount = totalCount/perThreadCount + (totalCount%perThreadCount == <span class="number">0</span> ? <span class="number">0</span> : <span class="number">1</span>);  </span><br><span class="line">			ExecutorService pool = Executors.newFixedThreadPool(threadCount);  </span><br><span class="line">			CountDownLatch countDownLatch1 = <span class="keyword">new</span> CountDownLatch(<span class="number">1</span>);  </span><br><span class="line">			CountDownLatch countDownLatch2 = <span class="keyword">new</span> CountDownLatch(threadCount);  </span><br><span class="line">			System.out.println(fileBeans.size());</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; threadCount; i++) &#123; </span><br><span class="line">				<span class="keyword">int</span> start = i*perThreadCount;</span><br><span class="line">				<span class="keyword">int</span> end = (i+<span class="number">1</span>) * perThreadCount &lt; totalCount ? (i+<span class="number">1</span>) * perThreadCount : totalCount;</span><br><span class="line">				List&lt;FileBean&gt; subList = fileBeans.subList(start, end);</span><br><span class="line">				Runnable runnable = <span class="keyword">new</span> FileBeanIndex(<span class="string">"index"</span>,i, countDownLatch1, countDownLatch2, subList);</span><br><span class="line">				<span class="comment">//子线程交给线程池管理  </span></span><br><span class="line">				pool.execute(runnable);  </span><br><span class="line">			&#125;  </span><br><span class="line">			countDownLatch1.countDown();  </span><br><span class="line">			System.out.println(<span class="string">"开始创建索引"</span>);  </span><br><span class="line">			<span class="comment">//等待所有线程都完成  </span></span><br><span class="line">			countDownLatch2.await();  </span><br><span class="line">			 <span class="comment">//线程全部完成工作  </span></span><br><span class="line">			System.out.println(<span class="string">"所有线程都创建索引完毕"</span>);  </span><br><span class="line">			<span class="comment">//释放线程池资源  </span></span><br><span class="line">			pool.shutdown();  </span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>参考博客：</p>
+<p><a href="https://blog.csdn.net/wuyinggui10000/article/details/45898099">https://blog.csdn.net/wuyinggui10000/article/details/45898099</a></p>
+<p><a href="https://blog.csdn.net/wuyinggui10000/category_3173543.html">https://blog.csdn.net/wuyinggui10000/category_3173543.html</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\1d1b964b.html" rel="bookmark">lucene第一篇</a></div>
+    </li>
+  </ul>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>汪哒哒
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/posts/2d0d7a93.html" title="lucene第二篇">http://yoursite.com/posts/2d0d7a93.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-MoMent/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-MOMENT</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        <div class="reward-container">
+  <div>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="汪哒哒 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="汪哒哒 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-heart"></i>　感谢您的阅读　　　　-------------</div>
+    
+</div>
+        
+      </div>
+
+<footer class="post-footer">
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/lucene/" rel="tag"><i class="fa fa-tag"></i> lucene</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/1d1b964b.html" rel="prev" title="lucene第一篇">
+      <i class="fa fa-chevron-left"></i> lucene第一篇
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、索引库的维护："><span class="nav-text">一、索引库的维护：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、搜索结果处理："><span class="nav-text">二、搜索结果处理：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、主程序："><span class="nav-text">A、主程序：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、评分算法·："><span class="nav-text">B、评分算法·：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C、高亮算法："><span class="nav-text">C、高亮算法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D、流程解释："><span class="nav-text">D、流程解释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E、工具类："><span class="nav-text">E、工具类：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、多线程索引建立："><span class="nav-text">三、多线程索引建立：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、构建的细节："><span class="nav-text">A、构建的细节：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、FileBean："><span class="nav-text">B、FileBean：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C、索引处理类："><span class="nav-text">C、索引处理类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D、索引创建："><span class="nav-text">D、索引创建：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E、合并索引："><span class="nav-text">E、合并索引：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F、测试类："><span class="nav-text">F、测试类：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="汪哒哒"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">汪哒哒</p>
+  <div class="site-description" itemprop="description">日常点滴和学习笔记</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="QQ → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="WeChat → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+  </div>
+
+ <!-- 友链  -->
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+          <li>
+            <a href="/" title="" target="_blank"></a>
+          </li>
+        
+          <li>
+            <a href="/" title="" target="_blank"></a>
+          </li>
+        
+          <li>
+            <a href="/" title="" target="_blank"></a>
+          </li>
+        
+          <li>
+            <a href="/" title="" target="_blank"></a>
+          </li>
+        
+      </ul>
+    </div>
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+
+  </aside>
+  <div id="sidebar-dimmer">
+
+
+
+  </div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">汪哒哒</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>站点总字数：
+    <span title="站点总字数">65k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>站点阅读时长≈
+    <span title="站点阅读时长">59 分钟</span>
+</div>
+
+
+<!-- 站点时间 -->
+<div>
+<span id="sitetime"></span>
+</div>
+<script language=javascript>
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/*
+		Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数
+        */
+		var t1 = Date.UTC(2020,07,01,00,00,00); //北京时间2018-2-13 00:00:00
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+<!-- 		document.getElementById("sitetime").innerHTML=" 已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒"; -->
+
+document.getElementById("sitetime").innerHTML=" 网站已运行"+/*diffYears+" 年 "+*/diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+
+	}
+	siteTime();
+</script>
+
+        
+<div class="busuanzi-count">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+       <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+
+
+
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+         <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='150' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'IhPpAsnsyKmsCEGlv3GMnfN6-9Nh9j0Va',
+      appKey     : 'MdrPMVpASADS3PgXrTzNiSY9',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！快活呀！~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
+
+

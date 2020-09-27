@@ -195,6 +195,376 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/2d0d7a93.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="汪哒哒">
+      <meta itemprop="description" content="日常点滴和学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MoMent">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2d0d7a93.html" class="post-title-link" itemprop="url">lucene第二篇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-23 21:51:46" itemprop="dateCreated datePublished" datetime="2020-07-23T21:51:46+08:00">2020-07-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">搜索框架</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/lucene/" itemprop="url" rel="index"><span itemprop="name">lucene</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/2d0d7a93.html" class="post-meta-item leancloud_visitors" data-flag-title="lucene第二篇" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/2d0d7a93.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/2d0d7a93.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>19k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、索引库的维护："><a href="#一、索引库的维护：" class="headerlink" title="一、索引库的维护："></a>一、索引库的维护：</h2><p>　　上一篇有介绍过索引库是如何建立以及 filed 的详解。对于索引库的维护，其本质就是对 filed 的增删改。所以理解 filed 对于掌握索引库的维护很重要。话不多说，直接上代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo3</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IndexWriter indexWriter;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化分析器</span></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个IndexWriter对象，需要使用IKAnalyzer作为分析器</span></span><br><span class="line">        indexWriter = <span class="keyword">new</span> IndexWriter(FSDirectory.open(<span class="keyword">new</span> File(<span class="string">"F:\\IDEAProject\\JavaWeb\\13_Search\\Index"</span>).toPath()),</span><br><span class="line">                <span class="keyword">new</span> IndexWriterConfig(<span class="keyword">new</span> IKAnalyzer()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加域</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addDocument</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个IndexWriter对象，需要使用IKAnalyzer作为分析器</span></span><br><span class="line">        IndexWriter indexWriter = <span class="keyword">new</span> IndexWriter(FSDirectory.open(</span><br><span class="line">                <span class="keyword">new</span> File(<span class="string">"F:\\IDEAProject\\JavaWeb\\13_Search\\Index"</span>).toPath()), <span class="keyword">new</span> IndexWriterConfig(<span class="keyword">new</span> IKAnalyzer()));</span><br><span class="line">        <span class="comment">//创建一个Document对象</span></span><br><span class="line">        Document document = <span class="keyword">new</span> Document();</span><br><span class="line">        <span class="comment">//向document对象中添加域</span></span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name"</span>, <span class="string">"新添加的文件"</span>, Field.Store.YES));</span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"content"</span>, <span class="string">"新添加的文件内容"</span>, Field.Store.NO));</span><br><span class="line">        document.add(<span class="keyword">new</span> StoredField(<span class="string">"path"</span>, <span class="string">"c:/temp/helo"</span>));</span><br><span class="line">        <span class="comment">// 把文档写入索引库</span></span><br><span class="line">        indexWriter.addDocument(document);</span><br><span class="line">        <span class="comment">//关闭索引库</span></span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 清空域</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAllDocument</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//删除全部文档</span></span><br><span class="line">        indexWriter.deleteAll();</span><br><span class="line">        <span class="comment">//关闭索引库</span></span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除指定索引</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteDocumentByQuery</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        indexWriter.deleteDocuments(<span class="keyword">new</span> Term(<span class="string">"name"</span>, <span class="string">"apache"</span>));</span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 更新索引，先删除后添加</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateDocument</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//创建一个新的文档对象</span></span><br><span class="line">        Document document = <span class="keyword">new</span> Document();</span><br><span class="line">        <span class="comment">//向文档对象中添加域</span></span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name"</span>, <span class="string">"更新之后的文档"</span>, Field.Store.YES));</span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name1"</span>, <span class="string">"更新之后的文档2"</span>, Field.Store.YES));</span><br><span class="line">        document.add(<span class="keyword">new</span> TextField(<span class="string">"name2"</span>, <span class="string">"更新之后的文档3"</span>, Field.Store.YES));</span><br><span class="line">        <span class="comment">//更新操作</span></span><br><span class="line">        indexWriter.updateDocument(<span class="keyword">new</span> Term(<span class="string">"name"</span>, <span class="string">"spring"</span>), document);</span><br><span class="line">        <span class="comment">//关闭索引库</span></span><br><span class="line">        indexWriter.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、搜索结果处理："><a href="#二、搜索结果处理：" class="headerlink" title="二、搜索结果处理："></a>二、搜索结果处理：</h2><p>　　我们常常在网站搜索时，可以看见各个网站都对结果的相关词进行了高亮的处理，在视觉上让人便于查找有搜索对应的文本块，同时界面展示更友好清晰明了。lucene 提供了 highlighter 插件来体现类似的效果，该插件可以对查询关键字高亮处理。</p>
+<p>　　highlighter 包含了用于处理结果页查询内容高亮显示的功能，其中 Highlighter 类 highlighter 包的核心组件，借助 Fragmenter, fragment Scorer, 和 Formatter 等类来支持用户自定义高亮展示的功能；</p>
+<h3 id="A、主程序："><a href="#A、主程序：" class="headerlink" title="A、主程序："></a>A、主程序：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HighlighterTest</span> </span>&#123;</span><br><span class="line">	  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		IndexSearcher searcher;</span><br><span class="line">		TopDocs docs; </span><br><span class="line">		ExecutorService service = Executors.newCachedThreadPool();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			searcher = SearchUtil.getMultiSearcher(<span class="string">"index"</span>, service);</span><br><span class="line">	        Term term = <span class="keyword">new</span> Term(<span class="string">"content"</span>,<span class="keyword">new</span> BytesRef(<span class="string">"lucene"</span>));</span><br><span class="line">	        TermQuery termQuery = <span class="keyword">new</span> TermQuery(term);</span><br><span class="line">	        docs = SearchUtil.getScoreDocsByPerPage(<span class="number">1</span>, <span class="number">30</span>, searcher, termQuery);</span><br><span class="line">			ScoreDoc[] hits = docs.scoreDocs;</span><br><span class="line">	        QueryScorer scorer = <span class="keyword">new</span> QueryScorer(termQuery);</span><br><span class="line">	        SimpleHTMLFormatter simpleHtmlFormatter = <span class="keyword">new</span> SimpleHTMLFormatter(<span class="string">"&lt;B&gt;"</span>,<span class="string">"&lt;/B&gt;"</span>);<span class="comment">//设定高亮显示的格式&lt;B&gt;keyword&lt;/B&gt;,此为默认的格式  </span></span><br><span class="line">	        Highlighter highlighter = <span class="keyword">new</span> Highlighter(simpleHtmlFormatter,scorer);   </span><br><span class="line">	        highlighter.setTextFragmenter(<span class="keyword">new</span> SimpleFragmenter(<span class="number">20</span>));<span class="comment">//设置每次返回的字符数</span></span><br><span class="line">	        Analyzer analyzer = <span class="keyword">new</span> StandardAnalyzer();</span><br><span class="line">	        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;hits.length;i++)&#123;   </span><br><span class="line">	            Document doc = searcher.doc(hits[i].doc);   </span><br><span class="line">	            String str = highlighter.getBestFragment(analyzer, <span class="string">"content"</span>, doc.get(<span class="string">"content"</span>)) ;</span><br><span class="line">	            System.out.println(str);   </span><br><span class="line">	        &#125;   </span><br><span class="line"> </span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e1.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InvalidTokenOffsetsException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			service.shutdown();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="B、评分算法·："><a href="#B、评分算法·：" class="headerlink" title="B、评分算法·："></a>B、评分算法·：</h3><p>　　lucene的highlighter高亮展示的原理：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/2d0d7a93.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/1d1b964b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="汪哒哒">
+      <meta itemprop="description" content="日常点滴和学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MoMent">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1d1b964b.html" class="post-title-link" itemprop="url">lucene第一篇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-21 21:44:50" itemprop="dateCreated datePublished" datetime="2020-07-21T21:44:50+08:00">2020-07-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">搜索框架</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/lucene/" itemprop="url" rel="index"><span itemprop="name">lucene</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/1d1b964b.html" class="post-meta-item leancloud_visitors" data-flag-title="lucene第一篇" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/1d1b964b.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/1d1b964b.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>19k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>18 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、Lucene概述："><a href="#一、Lucene概述：" class="headerlink" title="一、Lucene概述："></a>一、Lucene概述：</h2><h3 id="A、基本介绍："><a href="#A、基本介绍：" class="headerlink" title="A、基本介绍："></a>A、基本介绍：</h3><h4 id="1、软件介绍："><a href="#1、软件介绍：" class="headerlink" title="1、软件介绍："></a>1、软件介绍：</h4><p>　　Lucene是apache软件基金会发布的一个开放源代码的全文检索引擎工具包，由资深全文检索专家Doug Cutting所撰写,它是一个<strong>全文检索引擎的架构</strong>，提供了完整的创建索引和查询索引，以及部分文本分析的引擎，Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎，Lucene在全文检索领域是一个经典的祖先，现在很多检索引擎都是在其基础上创建的，思想是相通的。</p>
+<p>　　所以说Lucene 只是一个全文检索的工具包，它不能独立运行，不能单独对外提供服务。然而搜索引擎可以独立运行对外提供搜索服务。另外，Lucene不提供爬虫功能，如果需要获取内容需要自己建立爬虫应用。 Lucene只做索引和搜索工作。</p>
+<p>####2、数据检索方式：</p>
+<p>　　我们生活中的数据总体分为两种：结构化数据和非结构化数据。 结构化数据指具有固定格式或有限长度的数据，如数据库，元数据等。 非结构化数据指不定长或无固定格式的数据，如邮件，word 文档等磁盘上的文件。对于非结构化数据有两种查询方式：</p>
+<ul>
+<li>顺序扫描法：比如要找内容包含某一个字符串的文件，就是一个文档一个文档的看，从头看到尾，如果此文档包含此字符串，则此文档为我们要找的文件，接着看下 一个文件，直到扫描完所有的文件。Linux 中的 grep 命令便是这一种方式。该方法对于小数据量的文件，这种方法还是最直接，最方便的。但是对于大量的文件，这种方法就很慢了，如利用windows的搜索也可以搜索文件内容。</li>
+<li>全文检索方式：该方式首先将要查询的目标文档中的词提取出来，组成索引，通过查询索引达到搜索目标文档的目的。这种先建立索引，再对索引进行搜索的过程就叫全文检索。它是指以文本作为检索对象，找出含有指定词汇的文本。全面、准确和快速是衡量全文检索系统的关键指标。</li>
+</ul>
+<h3 id="B、索引介绍："><a href="#B、索引介绍：" class="headerlink" title="B、索引介绍："></a>B、索引介绍：</h3><h4 id="1、索引的由来："><a href="#1、索引的由来：" class="headerlink" title="1、索引的由来："></a>1、索引的由来：</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/1d1b964b.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/dfa3bea2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="汪哒哒">
+      <meta itemprop="description" content="日常点滴和学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MoMent">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/dfa3bea2.html" class="post-title-link" itemprop="url">Nginx第二篇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-11 15:08:06" itemprop="dateCreated datePublished" datetime="2020-07-11T15:08:06+08:00">2020-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb/" itemprop="url" rel="index"><span itemprop="name">JavaWeb</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaWeb/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/dfa3bea2.html" class="post-meta-item leancloud_visitors" data-flag-title="Nginx第二篇" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/dfa3bea2.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/dfa3bea2.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>9.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、Nginx-原理："><a href="#一、Nginx-原理：" class="headerlink" title="一、Nginx 原理："></a>一、Nginx 原理：</h2><h3 id="A、模块划分："><a href="#A、模块划分：" class="headerlink" title="A、模块划分："></a>A、模块划分：</h3><h4 id="1、从结构上划分："><a href="#1、从结构上划分：" class="headerlink" title="1、从结构上划分："></a>1、从结构上划分：</h4><p>　　Nginx由内核和模块组成，其中，内核的设计非常微小和简洁，完成的工作也非常简单，仅仅通过查找配置文件将客户端请求映射到一个location block（location是Nginx配置中的一个指令，用于URL匹配），而在这个location中所配置的每个指令将会启动不同的模块去完成相应的工作。</p>
+<p>　　 Nginx的模块从结构上分为核心模块、基础模块和第三方模块：</p>
+<ul>
+<li><p>核心模块：HTTP模块、EVENT模块和MAIL模块</p>
+</li>
+<li><p>基础模块：HTTP Access模块、HTTP FastCGI模块、HTTP Proxy模块和HTTP Rewrite模块，</p>
+</li>
+<li><p>第三方模块：HTTP Upstream Request Hash模块、Notice模块和HTTP Access Key模块。</p>
+</li>
+</ul>
+<p>　　用户根据自己的需要开发的模块都属于第三方模块。正是有了这么多模块的支撑，Nginx的功能才会如此强大。</p>
+<h4 id="2、从功能上划分："><a href="#2、从功能上划分：" class="headerlink" title="2、从功能上划分："></a>2、从功能上划分：</h4><p>Nginx的模块从功能上分为如下三类。</p>
+<ul>
+<li><p>Handlers（处理器模块）。此类模块直接处理请求，并进行输出内容和修改headers信息等操作。Handlers处理器模块一般只能有一个。</p>
+</li>
+<li><p>Filters （过滤器模块）。此类模块主要对其他处理器模块输出的内容进行修改操作，最后由Nginx输出。</p>
+</li>
+<li><p>Proxies （代理类模块）。此类模块是Nginx的HTTP Upstream之类的模块，这些模块主要与后端一些服务比如FastCGI等进行交互，实现服务代理和负载均衡等功能。</p>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/dfa3bea2.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/cf99e1c1.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,20 +759,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -431,6 +801,18 @@
       </div>
       <ul class="links-of-blogroll-list">
         
+        
+          <li>
+            <a href="/" title="" target="_blank"></a>
+          </li>
+        
+          <li>
+            <a href="/" title="" target="_blank"></a>
+          </li>
+        
+          <li>
+            <a href="/" title="" target="_blank"></a>
+          </li>
         
           <li>
             <a href="/" title="" target="_blank"></a>
@@ -477,12 +859,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>站点总字数：
-    <span title="站点总字数">16k</span>
+    <span title="站点总字数">65k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>站点阅读时长≈
-    <span title="站点阅读时长">15 分钟</span>
+    <span title="站点阅读时长">59 分钟</span>
 </div>
 
 

@@ -23,19 +23,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="日常点滴和学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="友情链接">
-<meta property="og:url" content="http://yoursite.com/links/index.html">
+  <meta name="description" content="一、引入：A、产生：1、大规模数据检索：  2、ES定义：a、概念与联系：　　ES&#x3D;elaticsearch简写， Elasticsearch是一个开源的高扩展的分布式全文检索引擎，它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理PB级别的数据。Elasticsearch也使用Java开发并使用Lucene作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的R">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch第一篇">
+<meta property="og:url" content="http://yoursite.com/posts/b60bc7b2.html">
 <meta property="og:site_name" content="MoMent">
-<meta property="og:description" content="日常点滴和学习笔记">
+<meta property="og:description" content="一、引入：A、产生：1、大规模数据检索：  2、ES定义：a、概念与联系：　　ES&#x3D;elaticsearch简写， Elasticsearch是一个开源的高扩展的分布式全文检索引擎，它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理PB级别的数据。Elasticsearch也使用Java开发并使用Lucene作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的R">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-07T09:03:22.000Z">
-<meta property="article:modified_time" content="2020-07-07T09:14:01.392Z">
+<meta property="article:published_time" content="2020-08-06T13:43:58.000Z">
+<meta property="article:modified_time" content="2020-09-27T13:51:52.571Z">
 <meta property="article:author" content="汪哒哒">
+<meta property="article:tag" content="Elasticsearch">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/links/">
+<link rel="canonical" href="http://yoursite.com/posts/b60bc7b2.html">
 
 
 <script id="page-configurations">
@@ -43,13 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>友情链接 | MoMent
-</title>
+  <title>Elasticsearch第一篇 | MoMent</title>
   
 
 
@@ -191,191 +191,221 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">友情链接
-</h1>
-
-<div class="post-meta">
   
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/b60bc7b2.html">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="汪哒哒">
+      <meta itemprop="description" content="日常点滴和学习笔记">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MoMent">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Elasticsearch第一篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-06 21:43:58" itemprop="dateCreated datePublished" datetime="2020-08-06T21:43:58+08:00">2020-08-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">搜索框架</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/b60bc7b2.html" class="post-meta-item leancloud_visitors" data-flag-title="Elasticsearch第一篇" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/b60bc7b2.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/b60bc7b2.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一、引入："><a href="#一、引入：" class="headerlink" title="一、引入："></a>一、引入：</h2><h3 id="A、产生："><a href="#A、产生：" class="headerlink" title="A、产生："></a>A、产生：</h3><h4 id="1、大规模数据检索："><a href="#1、大规模数据检索：" class="headerlink" title="1、大规模数据检索："></a>1、大规模数据检索：</h4>
+
+<h4 id="2、ES定义："><a href="#2、ES定义：" class="headerlink" title="2、ES定义："></a>2、ES定义：</h4><h5 id="a、概念与联系："><a href="#a、概念与联系：" class="headerlink" title="a、概念与联系："></a>a、概念与联系：</h5><p>　　ES=elaticsearch简写， Elasticsearch是一个开源的高扩展的分布式全文检索引擎，它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理PB级别的数据。Elasticsearch也使用Java开发并使用Lucene作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的RESTful API来隐藏Lucene的复杂性，从而让全文搜索变得简单。</p>
+<p>　　Lucene只是一个库。想要使用它，你必须使用Java来作为开发语言并将其直接集成到你的应用中，更糟糕的是，Lucene非常复杂，你需要深入了解检索的相关知识来理解它是如何工作的。Elasticsearch也使用Java开发并使用Lucene作为其核心来实现所有索引和搜索的功能，但是它的目的是通过简单的RESTful API来隐藏Lucene的复杂性，从而让全文搜索变得简单。</p>
+<h5 id="b、优缺点："><a href="#b、优缺点：" class="headerlink" title="b、优缺点："></a>b、优缺点：</h5><ul>
+<li>横向可扩展性： 作为大型分布式集群， 很容易就能扩展新的服务器到ES集群中，也可运行在单机上作为轻量级搜索引擎使用</li>
+<li>更丰富的功能： 与传统关系型数据库相比， ES提供了全文检索、同义词处理、相关度排名、复杂数据分析、海量数据的近实时处理等功能</li>
+<li>分片机制提供更好地分布性：同一个索引被分为多个分片(Shard)， 利用分而治之的思想提升处理效率</li>
+<li>高可用： 提供副本(Replica)机制，一个分片可以设置多个副本， 即使在某些服务器宕机后， 集群仍能正常工作</li>
+<li>开箱即用： 提供简单易用的API，服务的搭建、部署和使用都很容易操作</li>
+</ul>
+<h5 id="c、常见使用场景："><a href="#c、常见使用场景：" class="headerlink" title="c、常见使用场景："></a>c、常见使用场景：</h5><ul>
+<li>维基百科(类似百度百科): 全文检索, 高亮, 搜索推荐</li>
+<li>The Guardian(新闻网站): 用户行为日志(点击, 浏览, 收藏, 评论) + 社交网络数据(对某某新闻的相关看法), 数据分析(将公众对文章的反馈提交至文章作者)</li>
+<li>Stack Overflow(IT技术论坛): 全文检索, 搜索相关问题和答案</li>
+<li>GitHub(开源代码管理), 搜索管理其托管的上千亿行代码…….</li>
+</ul>
+<h4 id="3、ES其他介绍："><a href="#3、ES其他介绍：" class="headerlink" title="3、ES其他介绍："></a>3、ES其他介绍：</h4><h5 id="a、功能介绍："><a href="#a、功能介绍：" class="headerlink" title="a、功能介绍："></a>a、功能介绍：</h5><ul>
+<li><p><strong>分布式的搜索引擎和数据分析引擎</strong><br>  搜索：谷歌, 百度, 各大网站的站内搜索(如淘宝网的商品搜索), IT系统的检索(如OA内部的信息查询);<br>  数据分析：电商网站中, 对形如最近30天IT书籍销量排名前10的商家有哪些; 新闻网站中: 最近7天访问量排名Top 10的新闻是哪些……<br>  —— 总结: Elasticsearch适用于 在较大用户量、较高访问量的分布式系统中, 对数据进行搜索与分析.</p>
+</li>
+<li><p><strong>全文检索结构化检索 数据分析</strong><br>  全文检索：搜索商品名称包含”编程思想”的商品: select * from products where product_name like “%编程思想%”<br>  结构化检索：搜索商品分类为”计算机科学”的所有商品: select * from products where category_name=’计算机科学’<br>  数据分析：分析每一种商品分类下有多少件商品: select category_name, count(*) from products group by category_name<br>  其他个性化搜索需求：部分匹配、自动完成(输入联想)、搜索纠错、搜索推荐……</p>
+</li>
+<li><p><strong>海量数据的近实时处理</strong><br>  分布式：Elasticsearch可将海量数据自动分发到多台服务器上, 进行存储和检索;<br>  海量数据的处理：分布式系统构建完成后, 就可通过大规模服务器集群去存储和检索数据 —— 服务器有了处理海量数据的能力;<br>  基于Elasticsearch的搜索和分析服务可达到秒级响应.</p>
+</li>
+<li><p><strong>关于近实时:</strong></p>
+<p>  非近实时：检索x个数据要花费很长时间，这就不是近实时, 而是离线批处理<br>  实时：数据的处理与响应都是立即呈现的，几乎没有间隔，这在大数据应用场景下是很难达到的要求。<br>  近实时：对海量数据进行搜索和分析的响应耗时控制在秒级以内，方可称为近实时</p>
+</li>
+</ul>
+<h5 id="b、其他产品介绍："><a href="#b、其他产品介绍：" class="headerlink" title="b、其他产品介绍："></a>b、其他产品介绍：</h5><p>​        (1) Beats：是一个代理, 将不同类型的数据发送到Elasticsearch中<br>​        (2) Shield：提供基于角色的访问控制与审计, 加密通信、认证保护整个ES的数据, 为ES带来企业级的安全性 — 收费产品<br>​        (3) Watcher：是ES的警报和通知工具, 检测ES的状态, 在异常发生时进行提醒 — 收费产品<br>​        (4) Marvel：是ES的管理和监控工具, 检测ES集群的索引和节点的活动 — 收费产品</p>
+<h2 id="二、安装："><a href="#二、安装：" class="headerlink" title="二、安装："></a>二、安装：</h2><blockquote>
+<p>参考博文：</p>
+<p><a href="https://blog.csdn.net/laoyang360/article/details/52244917">https://blog.csdn.net/laoyang360/article/details/52244917</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+      
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>汪哒哒
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/posts/b60bc7b2.html" title="Elasticsearch第一篇">http://yoursite.com/posts/b60bc7b2.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-MoMent/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-MOMENT</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
 </div>
 
-</header>
-
+        <div class="reward-container">
+  <div>如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
       
-      
-      
-      <div class="post-body">
-                
-  
-  
-  
-
-    <div id="links">
-        <style>
-
-            #links{
-               margin-top: 5rem;
-            }
-
-            .links-content{
-                margin-top:1rem;
-            }
-
-            .link-navigation::after {
-                content: " ";
-                display: block;
-                clear: both;
-            }
-
-            .card {
-                width: 300px;
-                font-size: 1rem;
-                padding: 10px 20px;
-                border-radius: 4px;
-                transition-duration: 0.15s;
-                margin-bottom: 1rem;
-                display:flex;
-            }
-            .card:nth-child(odd) {
-                float: left;
-            }
-            .card:nth-child(even) {
-                float: right;
-            }
-            .card:hover {
-                transform: scale(1.1);
-                box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
-            }
-            .card a {
-                border:none;
-            }
-            .card .ava {
-                width: 3rem!important;
-                height: 3rem!important;
-                margin:0!important;
-                margin-right: 1em!important;
-                border-radius:4px;
-
-            }
-            .card .card-header {
-                font-style: italic;
-                overflow: hidden;
-                width: 236px;
-            }
-            .card .card-header a {
-                font-style: normal;
-                color: #2bbc8a;
-                font-weight: bold;
-                text-decoration: none;
-            }
-            .card .card-header a:hover {
-                color: #d480aa;
-                text-decoration: none;
-            }
-            .card .card-header .info {
-                font-style:normal;
-                color:#a3a3a3;
-                font-size:14px;
-                min-width: 0;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-            }
-        </style>
-        <div class="links-content">
-            <div class="link-navigation">
-
-                
-
-                    <div class="card">
-                        <img class="ava" src="https://enfangzhong.github.io/images/avatar.jpg"/>
-                        <div class="card-header">
-                           <div>
-                              <a href="https://enfangzhong.github.io/" target="_blank"> AnFrank</a>
-                              <a href="https://enfangzhong.github.io/" target="_blank"><span class="focus-links">关注</span></a>
-                           </div>
-                           <div class="info">既可以早九晚五又可以浪迹天涯。</div>
-                        </div>
-                    </div>
-
-                
-
-                    <div class="card">
-                        <img class="ava" src="https://lruihao.cn/images/avatar.png"/>
-                        <div class="card-header">
-                           <div>
-                              <a href="https://lruihao.cn/" target="_blank"> 博采众长</a>
-                              <a href="https://lruihao.cn/" target="_blank"><span class="focus-links">关注</span></a>
-                           </div>
-                           <div class="info">分享一些有趣程序、干货、技巧、开发教程、心情和学习记录等等。</div>
-                        </div>
-                    </div>
-
-                
-
-                    <div class="card">
-                        <img class="ava" src="https://cdn.jsdelivr.net/gh/yremp/resource@2.0/img/custom/head.jpg"/>
-                        <div class="card-header">
-                           <div>
-                              <a href="https://yremp.live" target="_blank"> Yremp</a>
-                              <a href="https://yremp.live" target="_blank"><span class="focus-links">关注</span></a>
-                           </div>
-                           <div class="info">流年，谁给过的倾城</div>
-                        </div>
-                    </div>
-
-                
-
-                    <div class="card">
-                        <img class="ava" src="https://leafjame.github.io/images/beichen.png"/>
-                        <div class="card-header">
-                           <div>
-                              <a href="https://leafjame.github.io" target="_blank"> Leaf's Blog</a>
-                              <a href="https://leafjame.github.io" target="_blank"><span class="focus-links">关注</span></a>
-                           </div>
-                           <div class="info">Java狮 北漂男 摄影 旅行 赚钱</div>
-                        </div>
-                    </div>
-
-                
-
-            </div>
-            
-            </div>
-        </div>
-
-  
-  
-  
-
-               
-        
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="汪哒哒 微信支付">
+        <p>微信支付</p>
       </div>
       
-      
-      
-    </div>
-    
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="汪哒哒 支付宝">
+        <p>支付宝</p>
+      </div>
 
+  </div>
+</div>
+
+
+      <div>
+        
+          <div>
     
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------　　　　本文结束　<i class="fa fa-heart"></i>　感谢您的阅读　　　　-------------</div>
     
+</div>
+        
+      </div>
+
+<footer class="post-footer">
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Elasticsearch/" rel="tag"><i class="fa fa-tag"></i> Elasticsearch</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/2d0d7a93.html" rel="prev" title="lucene第二篇">
+      <i class="fa fa-chevron-left"></i> lucene第二篇
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/d87f7e0c.html" rel="next" title="test">
+      test <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
     
+  </article>
+  
+  
+  
+
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -422,6 +452,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、引入："><span class="nav-text">一、引入：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、产生："><span class="nav-text">A、产生：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、大规模数据检索："><span class="nav-text">1、大规模数据检索：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、ES定义："><span class="nav-text">2、ES定义：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a、概念与联系："><span class="nav-text">a、概念与联系：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b、优缺点："><span class="nav-text">b、优缺点：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#c、常见使用场景："><span class="nav-text">c、常见使用场景：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、ES其他介绍："><span class="nav-text">3、ES其他介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a、功能介绍："><span class="nav-text">a、功能介绍：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b、其他产品介绍："><span class="nav-text">b、其他产品介绍：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、安装："><span class="nav-text">二、安装：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

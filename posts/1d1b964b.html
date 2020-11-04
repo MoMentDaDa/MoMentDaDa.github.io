@@ -30,21 +30,17 @@
 <meta property="og:site_name" content="MoMent">
 <meta property="og:description" content="一、Lucene概述：A、基本介绍：1、软件介绍：　　Lucene是apache软件基金会发布的一个开放源代码的全文检索引擎工具包，由资深全文检索专家Doug Cutting所撰写,它是一个全文检索引擎的架构，提供了完整的创建索引和查询索引，以及部分文本分析的引擎，Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/13bee3be594a9cc60a0be2217b794a55.jpg">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200721225954294.png">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200722213230189.png">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200722213321634.png">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200722221131860.png">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200722224405925.png">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200722225132622.png">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200723211452280.png">
-<meta property="og:image" content="http://yoursite.com/posts/1d1b964b/image-20200723212726182.png">
-<meta property="article:published_time" content="2020-07-21T13:44:50.000Z">
-<meta property="article:modified_time" content="2020-09-29T07:47:16.793Z">
+<meta property="og:image" content="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/13bee3be594a9cc60a0be2217b794a55.jpg">
+<meta property="og:image" content="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200721225954294.png">
+<meta property="og:image" content="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200722213321634.png">
+<meta property="og:image" content="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200722225132622.png">
+<meta property="og:image" content="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200723211452280.png">
+<meta property="og:image" content="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200723212726182.png">
+<meta property="article:published_time" content="2020-10-06T14:46:10.303Z">
+<meta property="article:modified_time" content="2020-11-04T13:30:18.004Z">
 <meta property="article:author" content="汪哒哒">
-<meta property="article:tag" content="lucene">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/posts/1d1b964b/13bee3be594a9cc60a0be2217b794a55.jpg">
+<meta name="twitter:image" content="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/13bee3be594a9cc60a0be2217b794a55.jpg">
 
 <link rel="canonical" href="http://yoursite.com/posts/1d1b964b.html">
 
@@ -97,7 +93,7 @@
   <div class="container use-motion">
     <div class="headband"></div>
     <!-- gitHub fork图标 -->
-    <a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <a href="https://github.com/MoMentDaDa" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
@@ -232,20 +228,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-21 21:44:50" itemprop="dateCreated datePublished" datetime="2020-07-21T21:44:50+08:00">2020-07-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">搜索框架</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%90%9C%E7%B4%A2%E6%A1%86%E6%9E%B6/lucene/" itemprop="url" rel="index"><span itemprop="name">lucene</span></a>
-                </span>
+              <time title="创建时间：2020-10-06 22:46:10" itemprop="dateCreated datePublished" datetime="2020-10-06T22:46:10+08:00">2020-10-06</time>
             </span>
 
           
@@ -295,8 +278,7 @@
       
         <h2 id="一、Lucene概述："><a href="#一、Lucene概述：" class="headerlink" title="一、Lucene概述："></a>一、Lucene概述：</h2><h3 id="A、基本介绍："><a href="#A、基本介绍：" class="headerlink" title="A、基本介绍："></a>A、基本介绍：</h3><h4 id="1、软件介绍："><a href="#1、软件介绍：" class="headerlink" title="1、软件介绍："></a>1、软件介绍：</h4><p>　　Lucene是apache软件基金会发布的一个开放源代码的全文检索引擎工具包，由资深全文检索专家Doug Cutting所撰写,它是一个<strong>全文检索引擎的架构</strong>，提供了完整的创建索引和查询索引，以及部分文本分析的引擎，Lucene的目的是为软件开发人员提供一个简单易用的工具包，以方便在目标系统中实现全文检索的功能，或者是以此为基础建立起完整的全文检索引擎，Lucene在全文检索领域是一个经典的祖先，现在很多检索引擎都是在其基础上创建的，思想是相通的。</p>
 <p>　　所以说Lucene 只是一个全文检索的工具包，它不能独立运行，不能单独对外提供服务。然而搜索引擎可以独立运行对外提供搜索服务。另外，Lucene不提供爬虫功能，如果需要获取内容需要自己建立爬虫应用。 Lucene只做索引和搜索工作。</p>
-<p>####2、数据检索方式：</p>
-<p>　　我们生活中的数据总体分为两种：结构化数据和非结构化数据。 结构化数据指具有固定格式或有限长度的数据，如数据库，元数据等。 非结构化数据指不定长或无固定格式的数据，如邮件，word 文档等磁盘上的文件。对于非结构化数据有两种查询方式：</p>
+<h4 id="2、数据检索方式："><a href="#2、数据检索方式：" class="headerlink" title="2、数据检索方式："></a>2、数据检索方式：</h4><p>　　我们生活中的数据总体分为两种：结构化数据和非结构化数据。 结构化数据指具有固定格式或有限长度的数据，如数据库，元数据等。 非结构化数据指不定长或无固定格式的数据，如邮件，word 文档等磁盘上的文件。对于非结构化数据有两种查询方式：</p>
 <ul>
 <li>顺序扫描法：比如要找内容包含某一个字符串的文件，就是一个文档一个文档的看，从头看到尾，如果此文档包含此字符串，则此文档为我们要找的文件，接着看下 一个文件，直到扫描完所有的文件。Linux 中的 grep 命令便是这一种方式。该方法对于小数据量的文件，这种方法还是最直接，最方便的。但是对于大量的文件，这种方法就很慢了，如利用windows的搜索也可以搜索文件内容。</li>
 <li>全文检索方式：该方式首先将要查询的目标文档中的词提取出来，组成索引，通过查询索引达到搜索目标文档的目的。这种先建立索引，再对索引进行搜索的过程就叫全文检索。它是指以文本作为检索对象，找出含有指定词汇的文本。全面、准确和快速是衡量全文检索系统的关键指标。</li>
@@ -305,20 +287,15 @@
 <p>　　例如字典的拼音表和部首检字表就相当于字典的索引，对每一个字的解释是非结构化的，如果字典没有音节表和部首检字表，在茫茫辞海中找一个字只能顺序扫描。然而字的某 些信息可以提取出来进行结构化处理，比如读音，就比较结构化，分声母和韵母，分别只有几种 可以一一列举，于是将读音拿出来按一定的顺序排列，每一项读音都指向此字的详细解释的页数。 我们搜索时按结构化的拼音搜到读音，然后按其指向的页数，便可找到我们的非结构化数据—— 也即对字的解释。</p>
 <h4 id="2、索引的存储内容："><a href="#2、索引的存储内容：" class="headerlink" title="2、索引的存储内容："></a>2、索引的存储内容：</h4><p>　　前面提过索引的由来，当我们查询某一字符串的时候，就相当于查询索引，把字符串和索引一一对比。最后通过符合字符串的索引找到我们需要找的文件。这种从字符串到文件的映射是文件到字符串映射的反向过程，于是保存这种信息的索引称为反向索引。反向索引的所保存的信息一般如下解释：</p>
 <p>　　假设我的文档集合里面有100篇文档，为了方便表示，我们为文档编号从1到100，得到下面的结构</p>
-<img src="/posts/1d1b964b/13bee3be594a9cc60a0be2217b794a55.jpg" class="" title="13bee3be594a9cc60a0be2217b794a55">
-
+<p><img src="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/13bee3be594a9cc60a0be2217b794a55.jpg" alt=""></p>
 <p>　　左边保存的是一系列字符串，称为<strong>词典</strong>。每个字符串都指向包含此字符串的文档(Document)链表，此文档链表称为<strong>倒排表</strong>。有了索引，便使保存的信息和要搜索的信息一致，可以大大加快搜索的速度。如说，我们要寻找既包含字符串“lucene”又包含字符串“solr”的文档，我们只需要以下几步：</p>
-<img src="/posts/1d1b964b/image-20200721225954294.png" class="" title="image-20200721225954294">
-
-
-
+<p><img src="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200721225954294.png" alt=""></p>
 <p>　　全文检索的确加快了搜索的速度，但是多了索引的过程，两者加起来不一定比顺序扫描快多少。的确，加上索引的过程，全文检索不一定比顺序扫描快，尤其是在数据量小的时候更是如此。而对一个很大量的数据创建索引也是一个很慢的过程。</p>
 <p>　　然而两者还是有区别的，顺序扫描是每次都要扫描，而创建索引的过程仅仅需要一次，以后便是一劳永逸的了，每次搜索，创建索引的过程不必经过，仅仅搜索创建好的索引就可以了。<strong>这也是全文搜索相对于顺序扫描的优势之一：一次索引，多次使用。</strong></p>
 <p>####　３、创建索引：</p>
-<img src="/posts/1d1b964b/image-20200722213230189.png" class="" title="image-20200722213230189">
 
-<img src="/posts/1d1b964b/image-20200722213321634.png" class="" title="image-20200722213321634">
 
+<p><img src="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200722213321634.png" alt=""></p>
 <p>　　最后形成如上图所示的索引链表。所以对词(Term) “allow”来讲，总共有两篇文档包含此词(Term)，从而词(Term)后面的文档链表总共有两项，第一项表示包含“allow”的第一篇文档，即1号文档，此文档中，“allow”出现了2次，第二项表示包含“allow”的第二个文档，是2号文档，此文档中，“allow”出现了1次。</p>
 <h2 id="二、快速入门及使用："><a href="#二、快速入门及使用：" class="headerlink" title="二、快速入门及使用："></a>二、快速入门及使用：</h2><h3 id="A、创建索引库："><a href="#A、创建索引库：" class="headerlink" title="A、创建索引库："></a>A、创建索引库：</h3><h4 id="1、导入依赖："><a href="#1、导入依赖：" class="headerlink" title="1、导入依赖："></a>1、导入依赖：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Lucene核心库 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lucene-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.2.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Lucene解析库 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lucene-queryparser&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.2.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Lucene附加的分析库 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.lucene&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lucene-analyzers-common&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;7.2.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--common-io --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;commons-io&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;commons-io&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.4&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--Junit --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;junit&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;junit&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.12&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 
@@ -332,7 +309,7 @@
 <li><p><strong>-创建文档对象：</strong>获取原始文档的目的是为了索引，在索引前需要将原始内容创建成文档对象（Document），Document中包括一些Field（file_name文件名称、file_path文件路径、file_size文件大小、file_content文件内容），如下图：</p>
 </li>
 </ul>
-<img src="/posts/1d1b964b/image-20200722221131860.png" class="" title="image-20200722221131860">
+
 
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建索引库</span></span><br><span class="line">   <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createIndex</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       <span class="comment">//1、创建一个Director对象，指定索引库保存的位置。</span></span><br><span class="line">       <span class="comment">//把索引库保存在内存中</span></span><br><span class="line">       <span class="comment">//Directory directory = new RAMDirectory();</span></span><br><span class="line">       <span class="comment">//把索引库保存在磁盘</span></span><br><span class="line">       Directory directory = FSDirectory.open(<span class="keyword">new</span> File(<span class="string">"F:\\IDEAProject\\JavaWeb\\13_Search\\Index"</span>).toPath());</span><br><span class="line">       <span class="comment">//2、基于Directory对象创建一个IndexWriter对象</span></span><br><span class="line">       <span class="comment">// Lucene 自带中文分词器</span></span><br><span class="line">       IndexWriterConfig config = <span class="keyword">new</span> IndexWriterConfig(<span class="keyword">new</span> IKAnalyzer());  <span class="comment">// 指定分析器，未指定默认为标准分析器</span></span><br><span class="line">       IndexWriter indexWriter = <span class="keyword">new</span> IndexWriter(directory, config);</span><br><span class="line">       <span class="comment">//3、读取磁盘上的文件，对应每个文件创建一个文档对象。</span></span><br><span class="line">       File dir = <span class="keyword">new</span> File(<span class="string">"F:\\IDEAProject\\JavaWeb\\13_Search\\searchFiles"</span>);</span><br><span class="line">       File[] files = dir.listFiles();</span><br><span class="line">       <span class="keyword">for</span> (File f : files) &#123;</span><br><span class="line">           <span class="comment">//取文件名</span></span><br><span class="line">           String fileName = f.getName();</span><br><span class="line">           <span class="comment">//文件的路径</span></span><br><span class="line">           String filePath = f.getPath();</span><br><span class="line">           <span class="comment">//文件的内容</span></span><br><span class="line">           String fileContent = FileUtils.readFileToString(f, <span class="string">"utf-8"</span>);</span><br><span class="line">           <span class="comment">//文件的大小</span></span><br><span class="line">           <span class="keyword">long</span> fileSize = FileUtils.sizeOf(f);</span><br><span class="line">           <span class="comment">//创建Field</span></span><br><span class="line">           <span class="comment">//参数1：域的名称，参数2：域的内容，参数3：是否存储</span></span><br><span class="line">           Field fieldName = <span class="keyword">new</span> TextField(<span class="string">"name"</span>, fileName, Field.Store.YES);</span><br><span class="line">           <span class="comment">//Field fieldPath = new TextField("path", filePath, Field.Store.YES);</span></span><br><span class="line">           Field fieldPath = <span class="keyword">new</span> StoredField(<span class="string">"path"</span>, filePath);</span><br><span class="line">           Field fieldContent = <span class="keyword">new</span> TextField(<span class="string">"content"</span>, fileContent, Field.Store.YES);</span><br><span class="line">           <span class="comment">//Field fieldSize = new TextField("size", fileSize + "", Field.Store.YES);</span></span><br><span class="line">           Field fieldSizeValue = <span class="keyword">new</span> LongPoint(<span class="string">"size"</span>, fileSize);</span><br><span class="line">           Field fieldSizeStore = <span class="keyword">new</span> StoredField(<span class="string">"size"</span>, fileSize);</span><br><span class="line">           <span class="comment">//创建文档对象</span></span><br><span class="line">           Document document = <span class="keyword">new</span> Document();</span><br><span class="line">           <span class="comment">//向文档对象中添加域</span></span><br><span class="line">           document.add(fieldName);</span><br><span class="line">           document.add(fieldPath);</span><br><span class="line">           document.add(fieldContent);</span><br><span class="line">           <span class="comment">//document.add(fieldSize);</span></span><br><span class="line">           document.add(fieldSizeValue);</span><br><span class="line">           document.add(fieldSizeStore);</span><br><span class="line">           <span class="comment">//5、把文档对象写入索引库</span></span><br><span class="line">           indexWriter.addDocument(document);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//6、关闭indexwriter对象</span></span><br><span class="line">       indexWriter.close();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
@@ -355,13 +332,12 @@
 <li>SmartChineseAnalyzer：对中文支持较好，但扩展性差，扩展词库，禁用词库和同义词库等不好处理，需要导入依赖。</li>
 </ul>
 <p>IK Analyzer是一个开源的，基亍java语言开发的轻量级的中文分词工具包。采用了特有的“正向迭代最细粒度切分算法“，支持细粒度和智能分词两种切分模式。2012版本的智能分词模式支持简单的分词排歧义处理和数量词合并输出。采用了多子处理器分析模式。IK Analyzer支持细粒度切分和智能切分两种分词模式;</p>
-<img src="/posts/1d1b964b/image-20200722224405925.png" class="" title="image-20200722224405925">
+
 
 <h4 id="4、使用："><a href="#4、使用：" class="headerlink" title="4、使用："></a>4、使用：</h4><p>　　导入依赖，将IKAnalyzer.cfg.xml 和stopword.dic 和 ext.dic 文件复制到工程资源目录下，再进行配置。ext.dic和stopword.dic文件的格式为UTF-8，注意是无BOM 的UTF-8 编码。扩展词汇名字和可以任意，但是得和配置文件一样。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;com.janeluo&lt;&#x2F;groupId&gt;</span><br><span class="line"></span><br><span class="line">    &lt;artifactId&gt;ikanalyzer&lt;&#x2F;artifactId&gt;</span><br><span class="line"></span><br><span class="line">    &lt;version&gt;2012_u6&lt;&#x2F;version&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
 
-<img src="/posts/1d1b964b/image-20200722225132622.png" class="" title="image-20200722225132622">
-
+<p><img src="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200722225132622.png" alt=""></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 分析器的效果演示，标准的默认为每个中文断开，非标准，可以自己更改</span><br><span class="line">    @Test</span><br><span class="line">    public void testTokenStream() throws Exception &#123;</span><br><span class="line">        &#x2F;&#x2F;1）创建一个Analyzer对象，StandardAnalyzer对象，</span><br><span class="line">      &#x2F;&#x2F;  Analyzer analyzer &#x3D; new StandardAnalyzer();</span><br><span class="line"></span><br><span class="line">        Analyzer analyzer &#x3D; new IKAnalyzer();</span><br><span class="line">        &#x2F;&#x2F;2）使用分析器对象的tokenStream方法获得一个TokenStream对象</span><br><span class="line">        TokenStream tokenStream &#x3D; analyzer.tokenStream(&quot;&quot;, &quot;2017年12月14日 - Lucene概述公安局Lucene是一款高性能的、可扩展的信息检索(IR)工具库。信息检索是指文档搜索、文档内信息搜索或者文档相关的元数据搜索等操作。&quot;);</span><br><span class="line">        &#x2F;&#x2F;3）向TokenStream对象中设置一个引用，相当于数一个指针</span><br><span class="line">        CharTermAttribute charTermAttribute &#x3D; tokenStream.addAttribute(CharTermAttribute.class);</span><br><span class="line">        &#x2F;&#x2F;4）调用TokenStream对象的rest方法。如果不调用抛异常</span><br><span class="line">        tokenStream.reset();</span><br><span class="line">        &#x2F;&#x2F;5）使用while循环遍历TokenStream对象</span><br><span class="line">        while (tokenStream.incrementToken()) &#123;</span><br><span class="line">            System.out.println(charTermAttribute.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;6）关闭TokenStream对象</span><br><span class="line">        tokenStream.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>##三、filed的详细介绍：</p>
@@ -372,10 +348,8 @@
 <li>是否索引：将 Field 分析后的词或整个 Field 值进行索引，只有索引方可搜索到。比如：商品名称、商品简介分析后进行索引，订单号、身份证号不用分析但也要索引，这些将来都要作为查询条件。</li>
 <li>是否存储：将 Field 值存储在文档中，存储在文档中的 Field 才可以从 Document 中获取<br>  比如：商品名称、订单号，凡是将来要从 Document 中获取的 Field 都要存储。</li>
 </ul>
-<img src="/posts/1d1b964b/image-20200723211452280.png" class="" title="image-20200723211452280">
-
-<h3 id="B、常见filed："><a href="#B、常见filed：" class="headerlink" title="B、常见filed："></a>B、常见filed：</h3><img src="/posts/1d1b964b/image-20200723212726182.png" class="" title="image-20200723212726182">
-
+<p><img src="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200723211452280.png" alt=""></p>
+<h3 id="B、常见filed："><a href="#B、常见filed：" class="headerlink" title="B、常见filed："></a>B、常见filed：</h3><p><img src="https://moement-blog.oss-cn-hangzhou.aliyuncs.com/JavaWeb/lucene/image-20200723212726182.png" alt=""></p>
 <h3 id="C、使用案例："><a href="#C、使用案例：" class="headerlink" title="C、使用案例："></a>C、使用案例：</h3><h4 id="1、IntField使用："><a href="#1、IntField使用：" class="headerlink" title="1、IntField使用："></a>1、IntField使用：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntFieldTest</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 保存一个intField</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexIntFieldStored</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Document document = <span class="keyword">new</span> Document();</span><br><span class="line">		document.add(<span class="keyword">new</span> IntField(<span class="string">"intValue"</span>, <span class="number">30</span>, Field.Store.YES));</span><br><span class="line">		<span class="comment">//要排序必须加同名的field，且类型为NumericDocValuesField</span></span><br><span class="line">		document.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"intValue"</span>, <span class="number">30</span>));</span><br><span class="line">		Document document1 = <span class="keyword">new</span> Document();</span><br><span class="line">		document1.add(<span class="keyword">new</span> IntField(<span class="string">"intValue"</span>, <span class="number">40</span>, Field.Store.YES));</span><br><span class="line">		document1.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"intValue"</span>, <span class="number">40</span>));</span><br><span class="line">		IndexWriter writer = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"intFieldPath"</span>, <span class="keyword">false</span>);</span><br><span class="line">			writer.addDocument(document);</span><br><span class="line">			writer.addDocument(document1);</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				writer.commit();</span><br><span class="line">				writer.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 测试intField排序</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIntFieldSort</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"intFieldPath"</span>, <span class="keyword">null</span>);</span><br><span class="line">			<span class="comment">//构建排序字段</span></span><br><span class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</span><br><span class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"intValue"</span>,SortField.Type.INT,<span class="keyword">true</span>);</span><br><span class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</span><br><span class="line">			<span class="comment">//查询所有结果</span></span><br><span class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</span><br><span class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</span><br><span class="line">			ScoreDoc[] scores = docs.scoreDocs;</span><br><span class="line">			<span class="comment">//遍历结果</span></span><br><span class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</span><br><span class="line">				System.out.println(searcher.doc(scoreDoc.doc));;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//searcher.search(query, results);</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="2、LongField使用"><a href="#2、LongField使用" class="headerlink" title="2、LongField使用"></a>2、LongField使用</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongFieldTest</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 保存一个longField</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIndexLongFieldStored</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Document document = <span class="keyword">new</span> Document();</span><br><span class="line">		document.add(<span class="keyword">new</span> LongField(<span class="string">"longValue"</span>, <span class="number">50L</span>, Field.Store.YES));</span><br><span class="line">		document.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"longValue"</span>, <span class="number">50L</span>));</span><br><span class="line">		Document document1 = <span class="keyword">new</span> Document();</span><br><span class="line">		document1.add(<span class="keyword">new</span> LongField(<span class="string">"longValue"</span>, <span class="number">80L</span>, Field.Store.YES));</span><br><span class="line">		document1.add(<span class="keyword">new</span> NumericDocValuesField(<span class="string">"longValue"</span>, <span class="number">80L</span>));</span><br><span class="line">		IndexWriter writer = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			writer = IndexUtil.getIndexWriter(<span class="string">"longFieldPath"</span>, <span class="keyword">false</span>);</span><br><span class="line">			writer.addDocument(document);</span><br><span class="line">			writer.addDocument(document1);</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				writer.commit();</span><br><span class="line">				writer.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//测试longField排序</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLongFieldSort</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			IndexSearcher searcher = SearchUtil.getIndexSearcher(<span class="string">"longFieldPath"</span>, <span class="keyword">null</span>);</span><br><span class="line">			<span class="comment">//构建排序字段</span></span><br><span class="line">			SortField[] sortField = <span class="keyword">new</span> SortField[<span class="number">1</span>];</span><br><span class="line">			sortField[<span class="number">0</span>] = <span class="keyword">new</span> SortField(<span class="string">"longValue"</span>,SortField.Type.LONG,<span class="keyword">true</span>);</span><br><span class="line">			Sort sort = <span class="keyword">new</span> Sort(sortField);</span><br><span class="line">			<span class="comment">//查询所有结果</span></span><br><span class="line">			Query query = <span class="keyword">new</span> MatchAllDocsQuery();</span><br><span class="line">			TopFieldDocs docs = searcher.search(query, <span class="number">2</span>, sort);</span><br><span class="line">			ScoreDoc[] scores = docs.scoreDocs;</span><br><span class="line">			<span class="comment">//遍历结果</span></span><br><span class="line">			<span class="keyword">for</span> (ScoreDoc scoreDoc : scores) &#123;</span><br><span class="line">				<span class="comment">//System.out.println(searcher.doc(scoreDoc.doc));;</span></span><br><span class="line">				Document doc = searcher.doc(scoreDoc.doc);</span><br><span class="line">				System.out.println(doc.getField(<span class="string">"longValue"</span>).numericValue());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//searcher.search(query, results);</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -406,12 +380,6 @@
     
     
       
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="\posts\2d0d7a93.html" rel="bookmark">lucene第二篇</a></div>
-    </li>
-  </ul>
 
         
 
@@ -464,10 +432,6 @@
 <footer class="post-footer">
 
       <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/lucene/" rel="tag"><i class="fa fa-tag"></i> lucene</a>
-          </div>
 
         
 
@@ -475,8 +439,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/dfa3bea2.html" rel="prev" title="Nginx第二篇">
-      <i class="fa fa-chevron-left"></i> Nginx第二篇
+    <a href="/posts/b60bc7b2.html" rel="prev" title="Elasticsearch第一篇">
+      <i class="fa fa-chevron-left"></i> Elasticsearch第一篇
     </a></div>
       <div class="post-nav-item">
     <a href="/posts/2d0d7a93.html" rel="next" title="lucene第二篇">
@@ -541,7 +505,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Lucene概述："><span class="nav-text">一、Lucene概述：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、基本介绍："><span class="nav-text">A、基本介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、软件介绍："><span class="nav-text">1、软件介绍：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、索引介绍："><span class="nav-text">B、索引介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、索引的由来："><span class="nav-text">1、索引的由来：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、索引的存储内容："><span class="nav-text">2、索引的存储内容：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、快速入门及使用："><span class="nav-text">二、快速入门及使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、创建索引库："><span class="nav-text">A、创建索引库：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、导入依赖："><span class="nav-text">1、导入依赖：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、创建索引库："><span class="nav-text">2、创建索引库：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、查询索引："><span class="nav-text">3、查询索引：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a、查询方法："><span class="nav-text">a、查询方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b、查询案例："><span class="nav-text">b、查询案例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、分词器的使用："><span class="nav-text">B、分词器的使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4、使用："><span class="nav-text">4、使用：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、常见filed："><span class="nav-text">B、常见filed：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C、使用案例："><span class="nav-text">C、使用案例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、IntField使用："><span class="nav-text">1、IntField使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、LongField使用"><span class="nav-text">2、LongField使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、FloatField使用："><span class="nav-text">3、FloatField使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、BinaryDocValuesField："><span class="nav-text">4、BinaryDocValuesField：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、StringField使用："><span class="nav-text">5、StringField使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、TextField使用："><span class="nav-text">6、TextField使用：</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Lucene概述："><span class="nav-text">一、Lucene概述：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、基本介绍："><span class="nav-text">A、基本介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、软件介绍："><span class="nav-text">1、软件介绍：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、数据检索方式："><span class="nav-text">2、数据检索方式：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、索引介绍："><span class="nav-text">B、索引介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、索引的由来："><span class="nav-text">1、索引的由来：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、索引的存储内容："><span class="nav-text">2、索引的存储内容：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、快速入门及使用："><span class="nav-text">二、快速入门及使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、创建索引库："><span class="nav-text">A、创建索引库：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、导入依赖："><span class="nav-text">1、导入依赖：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、创建索引库："><span class="nav-text">2、创建索引库：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、查询索引："><span class="nav-text">3、查询索引：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a、查询方法："><span class="nav-text">a、查询方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b、查询案例："><span class="nav-text">b、查询案例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、分词器的使用："><span class="nav-text">B、分词器的使用：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4、使用："><span class="nav-text">4、使用：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、常见filed："><span class="nav-text">B、常见filed：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C、使用案例："><span class="nav-text">C、使用案例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、IntField使用："><span class="nav-text">1、IntField使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、LongField使用"><span class="nav-text">2、LongField使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、FloatField使用："><span class="nav-text">3、FloatField使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、BinaryDocValuesField："><span class="nav-text">4、BinaryDocValuesField：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、StringField使用："><span class="nav-text">5、StringField使用：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、TextField使用："><span class="nav-text">6、TextField使用：</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -557,20 +521,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -591,40 +555,33 @@
 
 
 
-    <div class="links-of-blogroll motion-element links-of-blogroll-block">
-      <div class="links-of-blogroll-title">
-        <!-- modify icon to fire by szw -->
-        <i class="fa fa-history fa-" aria-hidden="true"></i>
-        近期文章
-      </div>
-      <ul class="links-of-blogroll-list">
-        
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-          <li>
-            <a href="/" title="" target="_blank"></a>
-          </li>
-        
-      </ul>
-    </div>
-
 
       </div>
+
+      
+        <div class="links-of-recent-posts motion-element">
+          <div class="links-of-recent-posts-title">
+            <i class="fa fa-history fa-fw"></i>
+            最近文章
+          </div>
+          <ul class="links-of-recent-posts-list">
+              <li class="links-of-recent-posts-item">
+                <a href="/posts/dfa3bea2.html" title="posts&#x2F;dfa3bea2.html">Nginx第二篇</a>
+              </li>
+              <li class="links-of-recent-posts-item">
+                <a href="/posts/2d0d7a93.html" title="posts&#x2F;2d0d7a93.html">lucene第二篇</a>
+              </li>
+              <li class="links-of-recent-posts-item">
+                <a href="/posts/1d1b964b.html" title="posts&#x2F;1d1b964b.html">lucene第一篇</a>
+              </li>
+              <li class="links-of-recent-posts-item">
+                <a href="/posts/b60bc7b2.html" title="posts&#x2F;b60bc7b2.html">Elasticsearch第一篇</a>
+              </li>
+              <li class="links-of-recent-posts-item">
+                <a href="/posts/cf99e1c1.html" title="posts&#x2F;cf99e1c1.html">Nginx-第一篇</a>
+              </li>
+          </ul>
+        </div>
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           <span>0%</span>
